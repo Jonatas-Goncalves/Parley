@@ -8,7 +8,9 @@ faster-whisper, and the spoken replies use Piper voices. The tutor itself is a
 small language model served by Ollama or llama.cpp; Parley can detect, start and
 preload that service for you.
 
-![Parley icon](assets/icons/parley-256.png)
+<p align="center">
+  <img src="assets/icons/parley-256.png" alt="Parley icon" width="128">
+</p>
 
 ## What you can do
 
