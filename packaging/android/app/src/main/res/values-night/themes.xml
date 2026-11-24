@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Parley" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/parley_accent_dark</item>
+        <item name="colorPrimaryDark">@color/parley_accent_dark</item>
+        <item name="colorAccent">@color/parley_accent_dark</item>
+        <item name="android:windowBackground">#11151C</item>
+        <item name="android:navigationBarColor">#1C222C</item>
+        <item name="android:statusBarColor">#1C222C</item>
+    </style>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Parley</string>
+    <string name="headline">Parley</string>
+    <string name="subtitle">Speak with a tutor running on this phone through llama.cpp.</string>
+    <string name="close">Close</string>
+</resources>
