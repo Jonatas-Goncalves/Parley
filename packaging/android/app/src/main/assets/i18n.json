@@ -1,0 +1,1572 @@
+{
+ "app_name": {
+  "en": "Parley",
+  "pt": "Parley",
+  "es": "Parley",
+  "fr": "Parley",
+  "it": "Parley",
+  "ja": "Parley",
+  "ko": "Parley",
+  "zh": "Parley"
+ },
+ "back": {
+  "en": "Back",
+  "pt": "Voltar",
+  "es": "Atrás",
+  "fr": "Retour",
+  "it": "Indietro",
+  "ja": "戻る",
+  "ko": "뒤로",
+  "zh": "返回"
+ },
+ "close": {
+  "en": "Close",
+  "pt": "Fechar",
+  "es": "Cerrar",
+  "fr": "Fermer",
+  "it": "Chiudi",
+  "ja": "閉じる",
+  "ko": "닫기",
+  "zh": "关闭"
+ },
+ "save": {
+  "en": "Save",
+  "pt": "Salvar",
+  "es": "Guardar",
+  "fr": "Enregistrer",
+  "it": "Salva",
+  "ja": "保存",
+  "ko": "저장",
+  "zh": "保存"
+ },
+ "cancel": {
+  "en": "Cancel",
+  "pt": "Cancelar",
+  "es": "Cancelar",
+  "fr": "Annuler",
+  "it": "Annulla",
+  "ja": "キャンセル",
+  "ko": "취소",
+  "zh": "取消"
+ },
+ "loading": {
+  "en": "Loading…",
+  "pt": "Carregando…",
+  "es": "Cargando…",
+  "fr": "Chargement…",
+  "it": "Caricamento…",
+  "ja": "読み込み中…",
+  "ko": "불러오는 중…",
+  "zh": "加载中…"
+ },
+ "welcome_title": {
+  "en": "Welcome to Parley",
+  "pt": "Bem-vindo ao Parley",
+  "es": "Bienvenido a Parley",
+  "fr": "Bienvenue dans Parley",
+  "it": "Benvenuto in Parley",
+  "ja": "Parley へようこそ",
+  "ko": "Parley에 오신 것을 환영합니다",
+  "zh": "欢迎使用 Parley"
+ },
+ "welcome_prompt": {
+  "en": "What would you like to speak today?",
+  "pt": "O que você gostaria de falar hoje?",
+  "es": "¿Qué te gustaría hablar hoy?",
+  "fr": "De quoi voulez-vous parler aujourd’hui ?",
+  "it": "Di cosa vuoi parlare oggi?",
+  "ja": "今日は何を話しますか？",
+  "ko": "오늘은 어떤 언어로 말할까요?",
+  "zh": "今天想说什么语言？"
+ },
+ "language_ja": {
+  "en": "Japanese",
+  "pt": "Japonês",
+  "es": "Japonés",
+  "fr": "Japonais",
+  "it": "Giapponese",
+  "ja": "日本語",
+  "ko": "일본어",
+  "zh": "日语"
+ },
+ "language_ko": {
+  "en": "Korean",
+  "pt": "Coreano",
+  "es": "Coreano",
+  "fr": "Coréen",
+  "it": "Coreano",
+  "ja": "韓国語",
+  "ko": "한국어",
+  "zh": "韩语"
+ },
+ "language_zh": {
+  "en": "Chinese",
+  "pt": "Chinês",
+  "es": "Chino",
+  "fr": "Chinois",
+  "it": "Cinese",
+  "ja": "中国語",
+  "ko": "중국어",
+  "zh": "中文"
+ },
+ "settings": {
+  "en": "Settings",
+  "pt": "Configurações",
+  "es": "Ajustes",
+  "fr": "Paramètres",
+  "it": "Impostazioni",
+  "ja": "設定",
+  "ko": "설정",
+  "zh": "设置"
+ },
+ "practice_title": {
+  "en": "Practice",
+  "pt": "Praticar",
+  "es": "Practicar",
+  "fr": "Pratiquer",
+  "it": "Esercizio",
+  "ja": "練習",
+  "ko": "연습",
+  "zh": "练习"
+ },
+ "voice_practice": {
+  "en": "Voice Practice",
+  "pt": "Prática de Voz",
+  "es": "Práctica de Voz",
+  "fr": "Pratique Vocale",
+  "it": "Pratica Vocale",
+  "ja": "音声練習",
+  "ko": "음성 연습",
+  "zh": "语音练习"
+ },
+ "voice_practice_desc": {
+  "en": "Real-time AI dialogue",
+  "pt": "Diálogo com IA em tempo real",
+  "es": "Diálogo con IA en tiempo real",
+  "fr": "Dialogue avec l’IA en temps réel",
+  "it": "Dialogo con l’IA in tempo reale",
+  "ja": "リアルタイムAI対話",
+  "ko": "실시간 AI 대화",
+  "zh": "实时 AI 对话"
+ },
+ "pronunciation": {
+  "en": "Pronunciation",
+  "pt": "Pronúncia",
+  "es": "Pronunciación",
+  "fr": "Prononciation",
+  "it": "Pronuncia",
+  "ja": "発音",
+  "ko": "발음",
+  "zh": "发音"
+ },
+ "pronunciation_desc": {
+  "en": "Speak the phrase — check your accuracy",
+  "pt": "Fale a frase — confira sua precisão",
+  "es": "Di la frase — comprueba tu precisión",
+  "fr": "Dites la phrase — vérifiez votre précision",
+  "it": "Pronuncia la frase — controlla la precisione",
+  "ja": "フレーズを話して正確さを確認",
+  "ko": "문장을 말하고 정확도를 확인하세요",
+  "zh": "朗读句子，检查准确度"
+ },
+ "beginner": {
+  "en": "Beginner",
+  "pt": "Iniciante",
+  "es": "Principiante",
+  "fr": "Débutant",
+  "it": "Principiante",
+  "ja": "初級",
+  "ko": "초급",
+  "zh": "初级"
+ },
+ "intermediate": {
+  "en": "Intermediate",
+  "pt": "Intermediário",
+  "es": "Intermedio",
+  "fr": "Intermédiaire",
+  "it": "Intermedio",
+  "ja": "中級",
+  "ko": "중급",
+  "zh": "中级"
+ },
+ "advanced": {
+  "en": "Advanced",
+  "pt": "Avançado",
+  "es": "Avanzado",
+  "fr": "Avancé",
+  "it": "Avanzato",
+  "ja": "上級",
+  "ko": "고급",
+  "zh": "高级"
+ },
+ "what_topic": {
+  "en": "What do you want to talk about?",
+  "pt": "Sobre o que você quer falar?",
+  "es": "¿De qué quieres hablar?",
+  "fr": "De quoi voulez-vous parler ?",
+  "it": "Di cosa vuoi parlare?",
+  "ja": "何について話しますか？",
+  "ko": "무엇에 대해 이야기할까요?",
+  "zh": "你想聊什么？"
+ },
+ "pronunciation_hint": {
+  "en": "Choose a scenario, speak the prompt, and get immediate tips.",
+  "pt": "Escolha um cenário, fale a frase e receba dicas na hora.",
+  "es": "Elige un escenario, di la frase y recibe consejos al instante.",
+  "fr": "Choisissez un scénario, dites la phrase et recevez des conseils.",
+  "it": "Scegli uno scenario, pronuncia la frase e ricevi suggerimenti.",
+  "ja": "シナリオを選び、フレーズを話すとすぐにヒントが出ます。",
+  "ko": "시나리오를 고르고 문장을 말하면 바로 팁을 받습니다.",
+  "zh": "选择场景，朗读句子，立即获得提示。"
+ },
+ "supplements": {
+  "en": "Supplements",
+  "pt": "Complementos",
+  "es": "Complementos",
+  "fr": "Compléments",
+  "it": "Extra",
+  "ja": "追加コンテンツ",
+  "ko": "추가 콘텐츠",
+  "zh": "补充内容"
+ },
+ "spoken_stories": {
+  "en": "Spoken Stories",
+  "pt": "Histórias Faladas",
+  "es": "Historias Narradas",
+  "fr": "Histoires Racontées",
+  "it": "Storie Narrate",
+  "ja": "朗読ストーリー",
+  "ko": "구연 이야기",
+  "zh": "有声故事"
+ },
+ "spoken_stories_desc": {
+  "en": "Listen & share short spoken stories (English only; others coming soon)",
+  "pt": "Ouça histórias curtas narradas (somente inglês; outros em breve)",
+  "es": "Escucha historias cortas narradas (solo inglés; otros próximamente)",
+  "fr": "Écoutez de courtes histoires racontées (anglais uniquement)",
+  "it": "Ascolta brevi storie narrate (solo inglese; altre in arrivo)",
+  "ja": "短い朗読を聴く（英語のみ、他は準備中）",
+  "ko": "짧은 구연 이야기를 듣기 (영어만, 다른 언어 준비 중)",
+  "zh": "收听短篇有声故事（仅英语，其他即将推出）"
+ },
+ "complete_sentence": {
+  "en": "Complete the Sentence",
+  "pt": "Complete a Frase",
+  "es": "Completa la Frase",
+  "fr": "Complétez la Phrase",
+  "it": "Completa la Frase",
+  "ja": "文を完成させる",
+  "ko": "문장 완성하기",
+  "zh": "完成句子"
+ },
+ "complete_sentence_desc": {
+  "en": "Listen and fill in the blanks — practice prepositions & grammar",
+  "pt": "Ouça e preencha as lacunas — pratique preposições e gramática",
+  "es": "Escucha y completa los espacios — practica preposiciones",
+  "fr": "Écoutez et complétez — pratiquez les prépositions",
+  "it": "Ascolta e completa gli spazi — pratica preposizioni",
+  "ja": "聴いて空欄を埋める — 前置詞と文法の練習",
+  "ko": "듣고 빈칸을 채우세요 — 전치사와 문법 연습",
+  "zh": "听录音填空——练习介词和语法"
+ },
+ "ai_not_ready": {
+  "en": "Preparing the local AI model…",
+  "pt": "Preparando o modelo de IA local…",
+  "es": "Preparando el modelo de IA local…",
+  "fr": "Préparation du modèle d’IA local…",
+  "it": "Preparazione del modello IA locale…",
+  "ja": "ローカルAIモデルを準備中…",
+  "ko": "로컬 AI 모델을 준비하는 중…",
+  "zh": "正在准备本地 AI 模型…"
+ },
+ "ai_ready": {
+  "en": "AI ready",
+  "pt": "IA pronta",
+  "es": "IA lista",
+  "fr": "IA prête",
+  "it": "IA pronta",
+  "ja": "AI 準備完了",
+  "ko": "AI 준비 완료",
+  "zh": "AI 就绪"
+ },
+ "model_ready": {
+  "en": "Model ready: {model}",
+  "pt": "Modelo pronto: {model}",
+  "es": "Modelo listo: {model}",
+  "fr": "Modèle prêt : {model}",
+  "it": "Modello pronto: {model}",
+  "ja": "モデル準備完了: {model}",
+  "ko": "모델 준비 완료: {model}",
+  "zh": "模型就绪：{model}"
+ },
+ "listening": {
+  "en": "Listening…",
+  "pt": "Ouvindo…",
+  "es": "Escuchando…",
+  "fr": "Écoute…",
+  "it": "In ascolto…",
+  "ja": "聞いています…",
+  "ko": "듣는 중…",
+  "zh": "正在聆听…"
+ },
+ "thinking": {
+  "en": "Thinking…",
+  "pt": "Pensando…",
+  "es": "Pensando…",
+  "fr": "Réflexion…",
+  "it": "Sto pensando…",
+  "ja": "考えています…",
+  "ko": "생각 중…",
+  "zh": "思考中…"
+ },
+ "speaking": {
+  "en": "Speaking…",
+  "pt": "Falando…",
+  "es": "Hablando…",
+  "fr": "Je parle…",
+  "it": "Sto parlando…",
+  "ja": "話しています…",
+  "ko": "말하는 중…",
+  "zh": "正在说话…"
+ },
+ "paused": {
+  "en": "Paused",
+  "pt": "Pausado",
+  "es": "En pausa",
+  "fr": "En pause",
+  "it": "In pausa",
+  "ja": "一時停止",
+  "ko": "일시정지",
+  "zh": "已暂停"
+ },
+ "continuous_mode": {
+  "en": "Continuous",
+  "pt": "Contínuo",
+  "es": "Continuo",
+  "fr": "Continu",
+  "it": "Continuo",
+  "ja": "連続",
+  "ko": "연속",
+  "zh": "连续"
+ },
+ "push_to_talk": {
+  "en": "Push to talk",
+  "pt": "Aperte para falar",
+  "es": "Pulsa para hablar",
+  "fr": "Appuyez pour parler",
+  "it": "Premi per parlare",
+  "ja": "押して話す",
+  "ko": "눌러서 말하기",
+  "zh": "按住说话"
+ },
+ "type_message": {
+  "en": "Type a message…",
+  "pt": "Digite uma mensagem…",
+  "es": "Escribe un mensaje…",
+  "fr": "Écrivez un message…",
+  "it": "Scrivi un messaggio…",
+  "ja": "メッセージを入力…",
+  "ko": "메시지를 입력하세요…",
+  "zh": "输入消息…"
+ },
+ "send": {
+  "en": "Send",
+  "pt": "Enviar",
+  "es": "Enviar",
+  "fr": "Envoyer",
+  "it": "Invia",
+  "ja": "送信",
+  "ko": "보내기",
+  "zh": "发送"
+ },
+ "end_session": {
+  "en": "End session",
+  "pt": "Encerrar sessão",
+  "es": "Terminar sesión",
+  "fr": "Terminer la session",
+  "it": "Termina sessione",
+  "ja": "セッション終了",
+  "ko": "세션 종료",
+  "zh": "结束会话"
+ },
+ "your_turn": {
+  "en": "Your turn",
+  "pt": "Sua vez",
+  "es": "Tu turno",
+  "fr": "À vous",
+  "it": "Tocca a te",
+  "ja": "あなたの番です",
+  "ko": "당신 차례",
+  "zh": "轮到你了"
+ },
+ "notes": {
+  "en": "Notes",
+  "pt": "Notas",
+  "es": "Notas",
+  "fr": "Notes",
+  "it": "Note",
+  "ja": "メモ",
+  "ko": "노트",
+  "zh": "笔记"
+ },
+ "accuracy": {
+  "en": "Accuracy",
+  "pt": "Precisão",
+  "es": "Precisión",
+  "fr": "Précision",
+  "it": "Precisione",
+  "ja": "正確さ",
+  "ko": "정확도",
+  "zh": "准确度"
+ },
+ "listeners_note": {
+  "en": "Headphones are recommended in continuous mode.",
+  "pt": "Fones de ouvido são recomendados no modo contínuo.",
+  "es": "Se recomiendan auriculares en modo continuo.",
+  "fr": "Un casque est recommandé en mode continu.",
+  "it": "Le cuffie sono consigliate in modalità continua.",
+  "ja": "連続モードではヘッドホンをおすすめします。",
+  "ko": "연속 모드에서는 헤드폰을 권장합니다.",
+  "zh": "连续模式建议使用耳机。"
+ },
+ "interface_language": {
+  "en": "Interface language",
+  "pt": "Idioma da interface",
+  "es": "Idioma de la interfaz",
+  "fr": "Langue de l’interface",
+  "it": "Lingua dell’interfaccia",
+  "ja": "表示言語",
+  "ko": "인터페이스 언어",
+  "zh": "界面语言"
+ },
+ "theme": {
+  "en": "Theme",
+  "pt": "Tema",
+  "es": "Tema",
+  "fr": "Thème",
+  "it": "Tema",
+  "ja": "テーマ",
+  "ko": "테마",
+  "zh": "主题"
+ },
+ "theme_light": {
+  "en": "Light",
+  "pt": "Claro",
+  "es": "Claro",
+  "fr": "Clair",
+  "it": "Chiaro",
+  "ja": "ライト",
+  "ko": "밝게",
+  "zh": "浅色"
+ },
+ "theme_dark": {
+  "en": "Dark",
+  "pt": "Escuro",
+  "es": "Oscuro",
+  "fr": "Sombre",
+  "it": "Scuro",
+  "ja": "ダーク",
+  "ko": "어둡게",
+  "zh": "深色"
+ },
+ "theme_system": {
+  "en": "Follow system",
+  "pt": "Seguir o sistema",
+  "es": "Seguir el sistema",
+  "fr": "Suivre le système",
+  "it": "Segui il sistema",
+  "ja": "システムに合わせる",
+  "ko": "시스템 설정 따르기",
+  "zh": "跟随系统"
+ },
+ "native_language": {
+  "en": "Native language",
+  "pt": "Idioma nativo",
+  "es": "Idioma nativo",
+  "fr": "Langue maternelle",
+  "it": "Lingua madre",
+  "ja": "母語",
+  "ko": "모국어",
+  "zh": "母语"
+ },
+ "target_language": {
+  "en": "Practice language",
+  "pt": "Idioma de prática",
+  "es": "Idioma de práctica",
+  "fr": "Langue d’apprentissage",
+  "it": "Lingua di pratica",
+  "ja": "学習する言語",
+  "ko": "학습 언어",
+  "zh": "练习语言"
+ },
+ "ai_backend": {
+  "en": "AI backend",
+  "pt": "Serviço de IA",
+  "es": "Motor de IA",
+  "fr": "Moteur d’IA",
+  "it": "Motore IA",
+  "ja": "AI バックエンド",
+  "ko": "AI 백엔드",
+  "zh": "AI 后端"
+ },
+ "ai_model": {
+  "en": "AI model",
+  "pt": "Modelo de IA",
+  "es": "Modelo de IA",
+  "fr": "Modèle d’IA",
+  "it": "Modello IA",
+  "ja": "AI モデル",
+  "ko": "AI 모델",
+  "zh": "AI 模型"
+ },
+ "model_weak": {
+  "en": "Weak — fastest",
+  "pt": "Fraco — mais rápido",
+  "es": "Débil — el más rápido",
+  "fr": "Faible — le plus rapide",
+  "it": "Debole — il più veloce",
+  "ja": "弱 — 最速",
+  "ko": "약함 — 가장 빠름",
+  "zh": "弱 — 最快"
+ },
+ "model_medium": {
+  "en": "Medium — balanced",
+  "pt": "Médio — equilibrado",
+  "es": "Medio — equilibrado",
+  "fr": "Moyen — équilibré",
+  "it": "Medio — equilibrato",
+  "ja": "中 — バランス",
+  "ko": "중간 — 균형",
+  "zh": "中 — 均衡"
+ },
+ "model_strong": {
+  "en": "Strong — best quality",
+  "pt": "Forte — melhor qualidade",
+  "es": "Fuerte — mejor calidad",
+  "fr": "Fort — meilleure qualité",
+  "it": "Forte — qualità migliore",
+  "ja": "強 — 最高品質",
+  "ko": "강함 — 최고 품질",
+  "zh": "强 — 最佳质量"
+ },
+ "model_quality_warning": {
+  "en": "Conversation quality depends on the model. Weaker models make more grammar and vocabulary mistakes.",
+  "pt": "A qualidade da conversa depende do modelo. Modelos fracos cometem mais erros.",
+  "es": "La calidad depende del modelo. Los modelos débiles cometen más errores.",
+  "fr": "La qualité dépend du modèle. Les modèles faibles font plus d’erreurs.",
+  "it": "La qualità dipende dal modello. I modelli deboli fanno più errori.",
+  "ja": "会話の品質はモデル次第です。弱いモデルは間違いが増えます。",
+  "ko": "대화 품질은 모델에 따라 다릅니다. 약한 모델은 실수가 많습니다.",
+  "zh": "对话质量取决于模型。较弱的模型错误更多。"
+ },
+ "model_installed": {
+  "en": "Downloaded",
+  "pt": "Baixado",
+  "es": "Descargado",
+  "fr": "Téléchargé",
+  "it": "Scaricato",
+  "ja": "ダウンロード済み",
+  "ko": "다운로드됨",
+  "zh": "已下载"
+ },
+ "model_not_downloaded": {
+  "en": "Not downloaded yet",
+  "pt": "Ainda não baixado",
+  "es": "Aún no descargado",
+  "fr": "Pas encore téléchargé",
+  "it": "Non ancora scaricato",
+  "ja": "未ダウンロード",
+  "ko": "아직 다운로드되지 않음",
+  "zh": "尚未下载"
+ },
+ "model_download_title": {
+  "en": "Download model",
+  "pt": "Baixar modelo",
+  "es": "Descargar modelo",
+  "fr": "Télécharger le modèle",
+  "it": "Scarica modello",
+  "ja": "モデルをダウンロード",
+  "ko": "모델 다운로드",
+  "zh": "下载模型"
+ },
+ "model_download_confirm": {
+  "en": "The {tier} model ({model}, about {size} GB) is not downloaded yet. Download it now? This can take a while.",
+  "pt": "O modelo {tier} ({model}, cerca de {size} GB) ainda não foi baixado. Baixar agora? Isso pode demorar.",
+  "es": "El modelo {tier} ({model}, unos {size} GB) aún no está descargado. ¿Descargarlo ahora? Puede tardar.",
+  "fr": "Le modèle {tier} ({model}, environ {size} Go) n’est pas encore téléchargé. Le télécharger maintenant ? Cela peut prendre du temps.",
+  "it": "Il modello {tier} ({model}, circa {size} GB) non è ancora scaricato. Scaricarlo ora? Può richiedere tempo.",
+  "ja": "{tier} モデル（{model}、約 {size} GB）は未ダウンロードです。今すぐダウンロードしますか？時間がかかる場合があります。",
+  "ko": "{tier} 모델({model}, 약 {size} GB)이 아직 다운로드되지 않았습니다. 지금 다운로드할까요? 시간이 걸릴 수 있습니다.",
+  "zh": "{tier} 模型（{model}，约 {size} GB）尚未下载。现在下载吗？可能需要一些时间。"
+ },
+ "download": {
+  "en": "Download",
+  "pt": "Baixar",
+  "es": "Descargar",
+  "fr": "Télécharger",
+  "it": "Scarica",
+  "ja": "ダウンロード",
+  "ko": "다운로드",
+  "zh": "下载"
+ },
+ "voice": {
+  "en": "Voice",
+  "pt": "Voz",
+  "es": "Voz",
+  "fr": "Voix",
+  "it": "Voce",
+  "ja": "声",
+  "ko": "목소리",
+  "zh": "声音"
+ },
+ "download_voice": {
+  "en": "Download voice",
+  "pt": "Baixar voz",
+  "es": "Descargar voz",
+  "fr": "Télécharger la voix",
+  "it": "Scarica voce",
+  "ja": "音声をダウンロード",
+  "ko": "음성 다운로드",
+  "zh": "下载语音"
+ },
+ "voice_installed_voices": {
+  "en": "Downloaded voices",
+  "pt": "Vozes baixadas",
+  "es": "Voces descargadas",
+  "fr": "Voix téléchargées",
+  "it": "Voci scaricate",
+  "ja": "ダウンロード済みの音声",
+  "ko": "다운로드된 음성",
+  "zh": "已下载的语音"
+ },
+ "voice_none_installed": {
+  "en": "No voices downloaded yet.",
+  "pt": "Nenhuma voz baixada ainda.",
+  "es": "Aún no hay voces descargadas.",
+  "fr": "Aucune voix téléchargée pour le moment.",
+  "it": "Nessuna voce ancora scaricata.",
+  "ja": "ダウンロード済みの音声はありません。",
+  "ko": "아직 다운로드된 음성이 없습니다.",
+  "zh": "尚未下载任何语音。"
+ },
+ "voice_delete": {
+  "en": "Delete voice",
+  "pt": "Excluir voz",
+  "es": "Eliminar voz",
+  "fr": "Supprimer la voix",
+  "it": "Elimina voce",
+  "ja": "音声を削除",
+  "ko": "음성 삭제",
+  "zh": "删除语音"
+ },
+ "voice_delete_confirm": {
+  "en": "Delete the voice “{voice}” from this computer?",
+  "pt": "Excluir a voz “{voice}” deste computador?",
+  "es": "¿Eliminar la voz “{voice}” de este equipo?",
+  "fr": "Supprimer la voix « {voice} » de cet ordinateur ?",
+  "it": "Eliminare la voce “{voice}” da questo computer?",
+  "ja": "このコンピューターから音声「{voice}」を削除しますか？",
+  "ko": "이 컴퓨터에서 음성 “{voice}”을(를) 삭제할까요?",
+  "zh": "要从这台电脑删除语音“{voice}”吗？"
+ },
+ "voice_deleted": {
+  "en": "Voice deleted.",
+  "pt": "Voz excluída.",
+  "es": "Voz eliminada.",
+  "fr": "Voix supprimée.",
+  "it": "Voce eliminata.",
+  "ja": "音声を削除しました。",
+  "ko": "음성이 삭제되었습니다.",
+  "zh": "语音已删除。"
+ },
+ "cjk_font_hint": {
+  "en": "Chinese, Japanese and Korean text needs a CJK font. Install Noto Sans CJK (or your distro equivalent) to replace the square glyphs.",
+  "pt": "Textos em chinês, japonês e coreano precisam de uma fonte CJK. Instale a Noto Sans CJK (ou o equivalente da sua distribuição) para substituir os quadrados.",
+  "es": "El texto en chino, japonés y coreano necesita una fuente CJK. Instala Noto Sans CJK (o el equivalente de tu distribución) para reemplazar los cuadros.",
+  "fr": "Le chinois, le japonais et le coréen nécessitent une police CJK. Installez Noto Sans CJK (ou l’équivalent de votre distribution) pour remplacer les carrés.",
+  "it": "Cinese, giapponese e coreano richiedono un font CJK. Installa Noto Sans CJK (o l’equivalente della tua distribuzione) per sostituire i quadrati.",
+  "ja": "中国語・日本語・韓国語には CJK フォントが必要です。四角い文字を表示するには Noto Sans CJK などをインストールしてください。",
+  "ko": "중국어, 일본어, 한국어에는 CJK 글꼴이 필요합니다. 네모로 보이는 글자를 바꾸려면 Noto Sans CJK를 설치하세요.",
+  "zh": "中文、日文和韩文需要 CJK 字体。请安装 Noto Sans CJK（或发行版提供的等效字体）以替换方块。"
+ },
+ "stories_section": {
+  "en": "Story audio pack",
+  "pt": "Pacote de áudio das histórias",
+  "es": "Paquete de audio de historias",
+  "fr": "Pack audio des histoires",
+  "it": "Pacchetto audio delle storie",
+  "ja": "ストーリー音声パック",
+  "ko": "이야기 오디오 팩",
+  "zh": "故事音频包"
+ },
+ "stories_available": {
+  "en": "{count} stories · {size} MB",
+  "pt": "{count} histórias · {size} MB",
+  "es": "{count} historias · {size} MB",
+  "fr": "{count} histoires · {size} Mo",
+  "it": "{count} storie · {size} MB",
+  "ja": "{count} 話 · {size} MB",
+  "ko": "{count}개 이야기 · {size} MB",
+  "zh": "{count} 篇故事 · {size} MB"
+ },
+ "stories_download": {
+  "en": "Download stories",
+  "pt": "Baixar histórias",
+  "es": "Descargar historias",
+  "fr": "Télécharger les histoires",
+  "it": "Scarica le storie",
+  "ja": "ストーリーをダウンロード",
+  "ko": "이야기 다운로드",
+  "zh": "下载故事"
+ },
+ "stories_download_confirm": {
+  "en": "Download {count} audio files ({size} MB) to your data folder?",
+  "pt": "Baixar {count} arquivos de áudio ({size} MB) para a pasta de dados?",
+  "es": "¿Descargar {count} audios ({size} MB) a tu carpeta de datos?",
+  "fr": "Télécharger {count} fichiers audio ({size} Mo) ?",
+  "it": "Scaricare {count} file audio ({size} MB) nella cartella dati?",
+  "ja": "{count} 個の音声（{size} MB）をデータフォルダに保存しますか？",
+  "ko": "오디오 {count}개({size} MB)를 데이터 폴더에 다운로드할까요?",
+  "zh": "要下载 {count} 个音频（{size} MB）到数据文件夹吗？"
+ },
+ "stories_installed": {
+  "en": "Stories downloaded",
+  "pt": "Histórias baixadas",
+  "es": "Historias descargadas",
+  "fr": "Histoires téléchargées",
+  "it": "Storie scaricate",
+  "ja": "ストーリーをダウンロード済み",
+  "ko": "이야기 다운로드됨",
+  "zh": "故事已下载"
+ },
+ "stories_remove": {
+  "en": "Remove stories",
+  "pt": "Remover histórias",
+  "es": "Eliminar historias",
+  "fr": "Supprimer les histoires",
+  "it": "Rimuovi storie",
+  "ja": "ストーリーを削除",
+  "ko": "이야기 삭제",
+  "zh": "删除故事"
+ },
+ "diagnostics": {
+  "en": "Diagnostics",
+  "pt": "Diagnóstico",
+  "es": "Diagnóstico",
+  "fr": "Diagnostic",
+  "it": "Diagnostica",
+  "ja": "診断",
+  "ko": "진단",
+  "zh": "诊断"
+ },
+ "onboarding_title": {
+  "en": "Set up Parley",
+  "pt": "Configurar o Parley",
+  "es": "Configurar Parley",
+  "fr": "Configurer Parley",
+  "it": "Configura Parley",
+  "ja": "Parley の設定",
+  "ko": "Parley 설정",
+  "zh": "设置 Parley"
+ },
+ "onboarding_intro": {
+  "en": "Parley runs entirely on your computer. Choose how the AI model should run.",
+  "pt": "O Parley roda totalmente no seu computador. Escolha como o modelo de IA deve rodar.",
+  "es": "Parley se ejecuta en tu equipo. Elige cómo debe funcionar el modelo de IA.",
+  "fr": "Parley fonctionne sur votre machine. Choisissez comment exécuter le modèle.",
+  "it": "Parley funziona sul tuo computer. Scegli come eseguire il modello IA.",
+  "ja": "Parley はすべて手元のコンピュータで動きます。AI モデルの実行方法を選んでください。",
+  "ko": "Parley는 내 컴퓨터에서 실행됩니다. AI 모델 실행 방식을 선택하세요.",
+  "zh": "Parley 完全在你的电脑上运行。请选择 AI 模型的运行方式。"
+ },
+ "recommended": {
+  "en": "Recommended",
+  "pt": "Recomendado",
+  "es": "Recomendado",
+  "fr": "Recommandé",
+  "it": "Consigliato",
+  "ja": "おすすめ",
+  "ko": "권장",
+  "zh": "推荐"
+ },
+ "hardware": {
+  "en": "Detected hardware",
+  "pt": "Hardware detectado",
+  "es": "Hardware detectado",
+  "fr": "Matériel détecté",
+  "it": "Hardware rilevato",
+  "ja": "検出されたハードウェア",
+  "ko": "감지된 하드웨어",
+  "zh": "检测到的硬件"
+ },
+ "get_started": {
+  "en": "Start",
+  "pt": "Começar",
+  "es": "Empezar",
+  "fr": "Commencer",
+  "it": "Inizia",
+  "ja": "始める",
+  "ko": "시작",
+  "zh": "开始"
+ },
+ "stories_title": {
+  "en": "Spoken Stories",
+  "pt": "Histórias Faladas",
+  "es": "Historias Narradas",
+  "fr": "Histoires Racontées",
+  "it": "Storie Narrate",
+  "ja": "朗読ストーリー",
+  "ko": "구연 이야기",
+  "zh": "有声故事"
+ },
+ "stories_missing": {
+  "en": "The story audio pack is not installed yet.",
+  "pt": "O pacote de áudio das histórias ainda não foi instalado.",
+  "es": "El paquete de audio aún no está instalado.",
+  "fr": "Le pack audio n’est pas encore installé.",
+  "it": "Il pacchetto audio non è ancora installato.",
+  "ja": "ストーリー音声パックは未インストールです。",
+  "ko": "이야기 오디오 팩이 아직 설치되지 않았습니다.",
+  "zh": "故事音频包尚未安装。"
+ },
+ "listen_and_fill": {
+  "en": "Listen and fill in the blanks",
+  "pt": "Ouça e preencha as lacunas",
+  "es": "Escucha y completa los espacios",
+  "fr": "Écoutez et complétez les blancs",
+  "it": "Ascolta e completa gli spazi",
+  "ja": "聴いて空欄を埋めましょう",
+  "ko": "듣고 빈칸을 채우세요",
+  "zh": "听录音并填空"
+ },
+ "play_audio": {
+  "en": "Play audio",
+  "pt": "Tocar áudio",
+  "es": "Reproducir audio",
+  "fr": "Lire l’audio",
+  "it": "Riproduci audio",
+  "ja": "音声を再生",
+  "ko": "오디오 재생",
+  "zh": "播放音频"
+ },
+ "new_exercise": {
+  "en": "New exercise",
+  "pt": "Novo exercício",
+  "es": "Nuevo ejercicio",
+  "fr": "Nouvel exercice",
+  "it": "Nuovo esercizio",
+  "ja": "新しい問題",
+  "ko": "새 문제",
+  "zh": "新练习"
+ },
+ "finish": {
+  "en": "Finish",
+  "pt": "Finalizar",
+  "es": "Finalizar",
+  "fr": "Terminer",
+  "it": "Termina",
+  "ja": "終了",
+  "ko": "완료",
+  "zh": "完成"
+ },
+ "correct": {
+  "en": "Correct",
+  "pt": "Certas",
+  "es": "Correctas",
+  "fr": "Correctes",
+  "it": "Corrette",
+  "ja": "正解",
+  "ko": "정답",
+  "zh": "正确"
+ },
+ "wrong": {
+  "en": "Wrong",
+  "pt": "Erradas",
+  "es": "Incorrectas",
+  "fr": "Fausses",
+  "it": "Sbagliate",
+  "ja": "不正解",
+  "ko": "오답",
+  "zh": "错误"
+ },
+ "bullets": {
+  "en": "{correct} correct · {wrong} wrong",
+  "pt": "{correct} certas · {wrong} erradas",
+  "es": "{correct} correctas · {wrong} incorrectas",
+  "fr": "{correct} correctes · {wrong} fausses",
+  "it": "{correct} corrette · {wrong} sbagliate",
+  "ja": "正解 {correct} · 不正解 {wrong}",
+  "ko": "정답 {correct} · 오답 {wrong}",
+  "zh": "正确 {correct} · 错误 {wrong}"
+ },
+ "score_band_1": {
+  "en": "Level 1 · Starter",
+  "pt": "Nível 1 · Iniciante",
+  "es": "Nivel 1 · Inicial",
+  "fr": "Niveau 1 · Débutant",
+  "it": "Livello 1 · Principiante",
+  "ja": "レベル 1 · 入門",
+  "ko": "레벨 1 · 입문",
+  "zh": "第 1 级 · 入门"
+ },
+ "score_band_2": {
+  "en": "Level 2 · Elementary",
+  "pt": "Nível 2 · Básico",
+  "es": "Nivel 2 · Básico",
+  "fr": "Niveau 2 · Élémentaire",
+  "it": "Livello 2 · Elementare",
+  "ja": "レベル 2 · 初級",
+  "ko": "레벨 2 · 초급",
+  "zh": "第 2 级 · 基础"
+ },
+ "score_band_3": {
+  "en": "Level 3 · Intermediate",
+  "pt": "Nível 3 · Intermediário",
+  "es": "Nivel 3 · Intermedio",
+  "fr": "Niveau 3 · Intermédiaire",
+  "it": "Livello 3 · Intermedio",
+  "ja": "レベル 3 · 中級",
+  "ko": "레벨 3 · 중급",
+  "zh": "第 3 级 · 中级"
+ },
+ "score_band_4": {
+  "en": "Level 4 · Upper intermediate",
+  "pt": "Nível 4 · Intermediário avançado",
+  "es": "Nivel 4 · Intermedio alto",
+  "fr": "Niveau 4 · Intermédiaire avancé",
+  "it": "Livello 4 · Intermedio avanzato",
+  "ja": "レベル 4 · 中上級",
+  "ko": "레벨 4 · 중상급",
+  "zh": "第 4 级 · 中高级"
+ },
+ "score_band_5": {
+  "en": "Level 5 · Advanced",
+  "pt": "Nível 5 · Avançado",
+  "es": "Nivel 5 · Avanzado",
+  "fr": "Niveau 5 · Avancé",
+  "it": "Livello 5 · Avanzato",
+  "ja": "レベル 5 · 上級",
+  "ko": "레벨 5 · 고급",
+  "zh": "第 5 级 · 高级"
+ },
+ "score_band_6": {
+  "en": "Level 6 · Proficient",
+  "pt": "Nível 6 · Proficiente",
+  "es": "Nivel 6 · Competente",
+  "fr": "Niveau 6 · Maîtrise",
+  "it": "Livello 6 · Padronanza",
+  "ja": "レベル 6 · 熟練",
+  "ko": "레벨 6 · 능숙",
+  "zh": "第 6 级 · 熟练"
+ },
+ "progress_title": {
+  "en": "Conversation progress",
+  "pt": "Progresso na conversa",
+  "es": "Progreso de conversación",
+  "fr": "Progression orale",
+  "it": "Progresso nella conversazione",
+  "ja": "会話の進捗",
+  "ko": "회화 진행 상황",
+  "zh": "会话进度"
+ },
+ "progress_desc": {
+  "en": "Speaking and listening only. This personal score is inspired by speaking tests but is not an official IELTS or TOEFL result.",
+  "pt": "Somente fala e escuta. Esta pontuação pessoal é inspirada em testes de fala, mas não é um resultado oficial de IELTS ou TOEFL.",
+  "es": "Solo expresión oral y escucha. Esta puntuación personal se inspira en pruebas orales, pero no es un resultado oficial de IELTS o TOEFL.",
+  "fr": "Uniquement l’oral et l’écoute. Cette note personnelle s’inspire de tests d’expression orale, sans valeur officielle IELTS ou TOEFL.",
+  "it": "Solo parlato e ascolto. Questo punteggio personale si ispira ai test orali, ma non è un risultato ufficiale IELTS o TOEFL.",
+  "ja": "スピーキングとリスニングのみ。IELTS や TOEFL の公式結果ではありません。",
+  "ko": "말하기와 듣기만 평가합니다. IELTS나 TOEFL의 공식 결과가 아닙니다.",
+  "zh": "仅评估口语与听力。这是个人估分，并非 IELTS 或 TOEFL 官方成绩。"
+ },
+ "progress_empty": {
+  "en": "Finish a Voice Practice session in {language} to start your history.",
+  "pt": "Conclua uma sessão de Prática de Voz em {language} para iniciar seu histórico.",
+  "es": "Termina una sesión de Práctica de Voz en {language} para iniciar tu historial.",
+  "fr": "Terminez une séance de Pratique Vocale en {language} pour commencer votre historique.",
+  "it": "Concludi una sessione di Pratica Vocale in {language} per iniziare la cronologia.",
+  "ja": "{language} の音声練習を完了すると履歴が始まります。",
+  "ko": "{language} 음성 연습을 마치면 기록이 시작됩니다.",
+  "zh": "完成一次{language}语音练习后即可开始记录。"
+ },
+ "progress_sessions": {
+  "en": "{count} sessions · average {average}/100 · best {best}",
+  "pt": "{count} sessões · média {average}/100 · melhor {best}",
+  "es": "{count} sesiones · media {average}/100 · mejor {best}",
+  "fr": "{count} séances · moyenne {average}/100 · meilleur {best}",
+  "it": "{count} sessioni · media {average}/100 · migliore {best}",
+  "ja": "{count} 回 · 平均 {average}/100 · 最高 {best}",
+  "ko": "{count}회 · 평균 {average}/100 · 최고 {best}",
+  "zh": "{count} 次 · 平均 {average}/100 · 最佳 {best}"
+ },
+ "progress_level": {
+  "en": "Estimated level: {level}",
+  "pt": "Nível estimado: {level}",
+  "es": "Nivel estimado: {level}",
+  "fr": "Niveau estimé : {level}",
+  "it": "Livello stimato: {level}",
+  "ja": "推定レベル: {level}",
+  "ko": "추정 레벨: {level}",
+  "zh": "估计等级：{level}"
+ },
+ "progress_recent": {
+  "en": "Recent sessions",
+  "pt": "Sessões recentes",
+  "es": "Sesiones recientes",
+  "fr": "Séances récentes",
+  "it": "Sessioni recenti",
+  "ja": "最近のセッション",
+  "ko": "최근 세션",
+  "zh": "最近会话"
+ },
+ "progress_overall": {
+  "en": "All languages",
+  "pt": "Todos os idiomas",
+  "es": "Todos los idiomas",
+  "fr": "Toutes les langues",
+  "it": "Tutte le lingue",
+  "ja": "すべての言語",
+  "ko": "모든 언어",
+  "zh": "所有语言"
+ },
+ "progress_language_row": {
+  "en": "{language}: {count} sessions · average {average}/100",
+  "pt": "{language}: {count} sessões · média {average}/100",
+  "es": "{language}: {count} sesiones · media {average}/100",
+  "fr": "{language} : {count} séances · moyenne {average}/100",
+  "it": "{language}: {count} sessioni · media {average}/100",
+  "ja": "{language}: {count} 回 · 平均 {average}/100",
+  "ko": "{language}: {count}회 · 평균 {average}/100",
+  "zh": "{language}：{count} 次 · 平均 {average}/100"
+ },
+ "progress_level_test": {
+  "en": "Take the level test",
+  "pt": "Fazer o teste de nível",
+  "es": "Hacer la prueba de nivel",
+  "fr": "Passer le test de niveau",
+  "it": "Fai il test di livello",
+  "ja": "レベルテストを受ける",
+  "ko": "레벨 테스트 보기",
+  "zh": "参加等级测试"
+ },
+ "session_score_title": {
+  "en": "Session score",
+  "pt": "Pontuação da sessão",
+  "es": "Puntuación de la sesión",
+  "fr": "Note de la séance",
+  "it": "Punteggio della sessione",
+  "ja": "セッションのスコア",
+  "ko": "세션 점수",
+  "zh": "会话得分"
+ },
+ "session_score_body": {
+  "en": "{score}/100 · {level}\n{turns} spoken turns · {words} words.\nSaved to your conversation history.",
+  "pt": "{score}/100 · {level}\n{turns} falas · {words} palavras.\nSalvo no seu histórico de conversação.",
+  "es": "{score}/100 · {level}\n{turns} intervenciones · {words} palabras.\nGuardado en tu historial de conversación.",
+  "fr": "{score}/100 · {level}\n{turns} prises de parole · {words} mots.\nEnregistré dans votre historique oral.",
+  "it": "{score}/100 · {level}\n{turns} interventi · {words} parole.\nSalvato nella cronologia delle conversazioni.",
+  "ja": "{score}/100 · {level}\n発話 {turns} 回 · {words} 語。\n会話履歴に保存しました。",
+  "ko": "{score}/100 · {level}\n발화 {turns}회 · {words}단어.\n대화 기록에 저장되었습니다.",
+  "zh": "{score}/100 · {level}\n发言 {turns} 次 · {words} 个词。\n已保存到会话历史。"
+ },
+ "level_test_title": {
+  "en": "Level test",
+  "pt": "Teste de nível",
+  "es": "Prueba de nivel",
+  "fr": "Test de niveau",
+  "it": "Test di livello",
+  "ja": "レベルテスト",
+  "ko": "레벨 테스트",
+  "zh": "等级测试"
+ },
+ "level_test_desc": {
+  "en": "Answer a few speaking prompts. Parley estimates your conversation level. This is a personal estimate, not an official exam.",
+  "pt": "Responda a alguns estímulos de fala. O Parley estima seu nível de conversação. É uma estimativa pessoal, não um exame oficial.",
+  "es": "Responde a algunas consignas orales. Parley estima tu nivel de conversación. Es una estimación personal, no un examen oficial.",
+  "fr": "Répondez à quelques consignes orales. Parley estime votre niveau de conversation. Il s’agit d’une estimation personnelle, pas d’un examen officiel.",
+  "it": "Rispondi ad alcuni spunti orali. Parley stima il tuo livello di conversazione. È una stima personale, non un esame ufficiale.",
+  "ja": "いくつかのスピーキング課題に答えてください。Parley が会話レベルを推定します。公式試験ではありません。",
+  "ko": "몇 가지 말하기 과제에 답하세요. Parley가 회화 레벨을 추정합니다. 공식 시험이 아닙니다.",
+  "zh": "回答几个口语题目。Parley 会估算你的会话水平。这是个人估计，不是官方考试。"
+ },
+ "level_test_prompt_counter": {
+  "en": "Prompt {current} of {total}",
+  "pt": "Tarefa {current} de {total}",
+  "es": "Consigna {current} de {total}",
+  "fr": "Consigne {current} sur {total}",
+  "it": "Consegna {current} di {total}",
+  "ja": "課題 {current}/{total}",
+  "ko": "과제 {current}/{total}",
+  "zh": "第 {current} 题，共 {total} 题"
+ },
+ "level_test_prompt_1": {
+  "en": "Introduce yourself: your name, where you live and what you do.",
+  "pt": "Apresente-se: seu nome, onde mora e o que faz.",
+  "es": "Preséntate: tu nombre, dónde vives y a qué te dedicas.",
+  "fr": "Présentez-vous : votre nom, votre lieu de vie et votre activité.",
+  "it": "Presentati: nome, dove vivi e cosa fai.",
+  "ja": "自己紹介をしてください。名前、住んでいる場所、仕事や勉強について話してください。",
+  "ko": "자기소개를 하세요. 이름, 사는 곳, 하는 일을 말하세요.",
+  "zh": "介绍一下自己：姓名、住哪里、做什么。"
+ },
+ "level_test_prompt_2": {
+  "en": "Describe your typical day, from morning to evening.",
+  "pt": "Descreva um dia típico seu, da manhã à noite.",
+  "es": "Describe un día típico tuyo, de la mañana a la noche.",
+  "fr": "Décrivez une journée typique, du matin au soir.",
+  "it": "Descrivi una tua giornata tipica, dalla mattina alla sera.",
+  "ja": "朝から夜までの典型的な一日を説明してください。",
+  "ko": "아침부터 저녁까지 평소 하루를 설명하세요.",
+  "zh": "描述你典型的一天，从早到晚。"
+ },
+ "level_test_prompt_3": {
+  "en": "Talk about a place you like and explain why.",
+  "pt": "Fale sobre um lugar de que gosta e explique por quê.",
+  "es": "Habla de un lugar que te guste y explica por qué.",
+  "fr": "Parlez d’un lieu que vous aimez et expliquez pourquoi.",
+  "it": "Parla di un luogo che ti piace e spiega perché.",
+  "ja": "好きな場所について話し、理由を説明してください。",
+  "ko": "좋아하는 장소에 대해 말하고 이유를 설명하세요.",
+  "zh": "谈谈一个你喜欢的地方，并解释原因。"
+ },
+ "level_test_prompt_4": {
+  "en": "Describe a problem you had recently and how you solved it.",
+  "pt": "Descreva um problema recente e como você o resolveu.",
+  "es": "Describe un problema reciente y cómo lo resolviste.",
+  "fr": "Décrivez un problème récent et comment vous l’avez résolu.",
+  "it": "Descrivi un problema recente e come lo hai risolto.",
+  "ja": "最近経験した問題と、それをどう解決したか話してください。",
+  "ko": "최근 겪은 문제와 해결 방법을 설명하세요.",
+  "zh": "描述你最近遇到的一个问题，以及你是如何解决的。"
+ },
+ "level_test_prompt_5": {
+  "en": "Give your opinion about learning languages and explain your reasons.",
+  "pt": "Dê sua opinião sobre aprender idiomas e explique seus motivos.",
+  "es": "Da tu opinión sobre aprender idiomas y explica tus razones.",
+  "fr": "Donnez votre avis sur l’apprentissage des langues et vos raisons.",
+  "it": "Dai la tua opinione sull’imparare le lingue e spiega i motivi.",
+  "ja": "言語学習についての意見と理由を話してください。",
+  "ko": "언어 학습에 대한 의견과 이유를 말하세요.",
+  "zh": "谈谈你对学习语言的看法并说明理由。"
+ },
+ "level_test_record": {
+  "en": "🎙  Record answer",
+  "pt": "🎙  Gravar resposta",
+  "es": "🎙  Grabar respuesta",
+  "fr": "🎙  Enregistrer la réponse",
+  "it": "🎙  Registra risposta",
+  "ja": "🎙  回答を録音",
+  "ko": "🎙  답변 녹음",
+  "zh": "🎙 录制回答"
+ },
+ "level_test_stop": {
+  "en": "■ Stop and continue",
+  "pt": "■ Parar e continuar",
+  "es": "■ Detener y continuar",
+  "fr": "■ Arrêter et continuer",
+  "it": "■ Ferma e continua",
+  "ja": "■ 停止して次へ",
+  "ko": "■ 중지하고 계속",
+  "zh": "■ 停止并继续"
+ },
+ "level_test_thinking": {
+  "en": "Transcribing your answer…",
+  "pt": "Transcrevendo sua resposta…",
+  "es": "Transcribiendo tu respuesta…",
+  "fr": "Transcription de votre réponse…",
+  "it": "Trascrizione della risposta…",
+  "ja": "回答を文字起こし中…",
+  "ko": "답변을 받아쓰는 중…",
+  "zh": "正在转写你的回答…"
+ },
+ "level_test_done": {
+  "en": "Test complete",
+  "pt": "Teste concluído",
+  "es": "Prueba completada",
+  "fr": "Test terminé",
+  "it": "Test completato",
+  "ja": "テスト完了",
+  "ko": "테스트 완료",
+  "zh": "测试完成"
+ },
+ "level_test_result": {
+  "en": "Estimated level: {level} ({score}/100)",
+  "pt": "Nível estimado: {level} ({score}/100)",
+  "es": "Nivel estimado: {level} ({score}/100)",
+  "fr": "Niveau estimé : {level} ({score}/100)",
+  "it": "Livello stimato: {level} ({score}/100)",
+  "ja": "推定レベル: {level}（{score}/100）",
+  "ko": "추정 레벨: {level} ({score}/100)",
+  "zh": "估计等级：{level}（{score}/100）"
+ },
+ "level_test_retry": {
+  "en": "Take the test again",
+  "pt": "Fazer o teste novamente",
+  "es": "Hacer la prueba de nuevo",
+  "fr": "Refaire le test",
+  "it": "Rifai il test",
+  "ja": "もう一度テストを受ける",
+  "ko": "테스트 다시 보기",
+  "zh": "重新测试"
+ },
+ "level_test_disclaimer": {
+  "en": "Personal estimate inspired by IELTS and TOEFL speaking tasks. It has no official value.",
+  "pt": "Estimativa pessoal inspirada em tarefas de fala do IELTS e TOEFL. Não tem valor oficial.",
+  "es": "Estimación personal inspirada en tareas orales de IELTS y TOEFL. Sin valor oficial.",
+  "fr": "Estimation personnelle inspirée des épreuves orales IELTS et TOEFL. Sans valeur officielle.",
+  "it": "Stima personale ispirata alle prove orali IELTS e TOEFL. Senza valore ufficiale.",
+  "ja": "IELTS・TOEFL のスピーキング課題に着想を得た個人の推定です。公式な価値はありません。",
+  "ko": "IELTS 및 TOEFL 말하기 과제에서 영감을 받은 개인 추정치이며 공식 효력은 없습니다.",
+  "zh": "受 IELTS 与 TOEFL 口语任务启发的个人估计，不具备官方效力。"
+ },
+ "error_generic": {
+  "en": "Something went wrong: {error}",
+  "pt": "Algo deu errado: {error}",
+  "es": "Algo salió mal: {error}",
+  "fr": "Une erreur est survenue : {error}",
+  "it": "Si è verificato un errore: {error}",
+  "ja": "エラーが発生しました: {error}",
+  "ko": "문제가 발생했습니다: {error}",
+  "zh": "出错了：{error}"
+ },
+ "error_backend": {
+  "en": "The AI service is not available: {error}",
+  "pt": "O serviço de IA não está disponível: {error}",
+  "es": "El servicio de IA no está disponible: {error}",
+  "fr": "Le service d’IA est indisponible : {error}",
+  "it": "Il servizio IA non è disponibile: {error}",
+  "ja": "AI サービスを利用できません: {error}",
+  "ko": "AI 서비스를 사용할 수 없습니다: {error}",
+  "zh": "AI 服务不可用：{error}"
+ },
+ "error_mic": {
+  "en": "The microphone is not available: {error}",
+  "pt": "O microfone não está disponível: {error}",
+  "es": "El micrófono no está disponible: {error}",
+  "fr": "Le microphone est indisponible : {error}",
+  "it": "Il microfono non è disponibile: {error}",
+  "ja": "マイクを利用できません: {error}",
+  "ko": "마이크를 사용할 수 없습니다: {error}",
+  "zh": "麦克风不可用：{error}"
+ },
+ "error_voice": {
+  "en": "The voice is not installed yet. Download it in Settings.",
+  "pt": "A voz ainda não foi instalada. Baixe em Configurações.",
+  "es": "La voz aún no está instalada. Descárgala en Ajustes.",
+  "fr": "La voix n’est pas installée. Téléchargez-la dans Paramètres.",
+  "it": "La voce non è installata. Scaricala nelle Impostazioni.",
+  "ja": "音声が未インストールです。設定からダウンロードしてください。",
+  "ko": "음성이 설치되지 않았습니다. 설정에서 다운로드하세요.",
+  "zh": "语音尚未安装，请在设置中下载。"
+ },
+ "android_offline_setup": {
+  "en": "Set up offline with Termux",
+  "pt": "Configurar offline com Termux",
+  "es": "Configurar sin conexión con Termux",
+  "fr": "Configurer le mode hors ligne avec Termux",
+  "it": "Configura l'uso offline con Termux",
+  "ja": "Termux でオフライン設定",
+  "ko": "Termux로 오프라인 설정",
+  "zh": "使用 Termux 离线设置"
+ },
+ "android_offline_intro": {
+  "en": "Termux runs llama.cpp on this phone, so Parley works without a computer. The commands below are in English.",
+  "pt": "O Termux executa o llama.cpp neste celular, então o Parley funciona sem computador. Os comandos abaixo estão em inglês.",
+  "es": "Termux ejecuta llama.cpp en este teléfono, así que Parley funciona sin computadora. Los comandos siguientes están en inglés.",
+  "fr": "Termux exécute llama.cpp sur ce téléphone : Parley fonctionne sans ordinateur. Les commandes ci-dessous sont en anglais.",
+  "it": "Termux esegue llama.cpp su questo telefono, quindi Parley funziona senza computer. I comandi seguenti sono in inglese.",
+  "ja": "Termux がこの端末で llama.cpp を動かすため、Parley はパソコンなしで使えます。以下のコマンドは英語です。",
+  "ko": "Termux가 이 휴대폰에서 llama.cpp를 실행하므로 Parley는 컴퓨터 없이 작동합니다. 아래 명령은 영어입니다.",
+  "zh": "Termux 会在这部手机上运行 llama.cpp，因此 Parley 无需电脑即可使用。下面的命令为英文。"
+ },
+ "android_server_url": {
+  "en": "llama.cpp address",
+  "pt": "Endereço do llama.cpp",
+  "es": "Dirección de llama.cpp",
+  "fr": "Adresse de llama.cpp",
+  "it": "Indirizzo di llama.cpp",
+  "ja": "llama.cpp のアドレス",
+  "ko": "llama.cpp 주소",
+  "zh": "llama.cpp 地址"
+ },
+ "android_model_name": {
+  "en": "Model name",
+  "pt": "Nome do modelo",
+  "es": "Nombre del modelo",
+  "fr": "Nom du modèle",
+  "it": "Nome del modello",
+  "ja": "モデル名",
+  "ko": "모델 이름",
+  "zh": "模型名称"
+ },
+ "android_conversation_start": {
+  "en": "You can start speaking whenever you are ready.",
+  "pt": "Você pode começar a falar quando quiser.",
+  "es": "Puedes empezar a hablar cuando quieras.",
+  "fr": "Vous pouvez commencer à parler quand vous voulez.",
+  "it": "Puoi iniziare a parlare quando vuoi.",
+  "ja": "準備ができたら話し始めてください。",
+  "ko": "준비되면 언제든 말씀하세요.",
+  "zh": "准备好后随时可以开口。"
+ },
+ "android_speak": {
+  "en": "Speak",
+  "pt": "Falar",
+  "es": "Hablar",
+  "fr": "Parler",
+  "it": "Parla",
+  "ja": "話す",
+  "ko": "말하기",
+  "zh": "说话"
+ },
+ "android_stop_listening": {
+  "en": "Stop listening",
+  "pt": "Parar de ouvir",
+  "es": "Dejar de escuchar",
+  "fr": "Arrêter d'écouter",
+  "it": "Smetti di ascoltare",
+  "ja": "聞き取りを停止",
+  "ko": "듣기 중지",
+  "zh": "停止聆听"
+ },
+ "android_empty_message": {
+  "en": "Say something or type a message first.",
+  "pt": "Fale algo ou digite uma mensagem primeiro.",
+  "es": "Di algo o escribe un mensaje primero.",
+  "fr": "Dites quelque chose ou saisissez un message.",
+  "it": "Di qualcosa o scrivi un messaggio.",
+  "ja": "まず話すか、メッセージを入力してください。",
+  "ko": "먼저 말하거나 메시지를 입력하세요.",
+  "zh": "请先说话或输入一条消息。"
+ },
+ "android_not_understood": {
+  "en": "I did not catch that. Please try again.",
+  "pt": "Não entendi. Tente novamente.",
+  "es": "No te entendí. Inténtalo de nuevo.",
+  "fr": "Je n'ai pas compris. Réessayez.",
+  "it": "Non ho capito. Riprova.",
+  "ja": "聞き取れませんでした。もう一度お試しください。",
+  "ko": "잘 듣지 못했어요. 다시 시도해 주세요.",
+  "zh": "没有听清，请再试一次。"
+ },
+ "android_mic_denied": {
+  "en": "Microphone permission is required to speak.",
+  "pt": "A permissão do microfone é necessária para falar.",
+  "es": "Se requiere permiso de micrófono para hablar.",
+  "fr": "L'autorisation du microphone est nécessaire pour parler.",
+  "it": "Serve il permesso del microfono per parlare.",
+  "ja": "話すにはマイクの権限が必要です。",
+  "ko": "말하려면 마이크 권한이 필요합니다.",
+  "zh": "说话需要麦克风权限。"
+ },
+ "android_clear": {
+  "en": "Clear conversation",
+  "pt": "Limpar conversa",
+  "es": "Borrar conversación",
+  "fr": "Effacer la conversation",
+  "it": "Cancella conversazione",
+  "ja": "会話を消去",
+  "ko": "대화 지우기",
+  "zh": "清空对话"
+ },
+ "android_backend_unreachable": {
+  "en": "llama.cpp is not answering at {url}. Start llama-server in Termux and try again.",
+  "pt": "O llama.cpp não responde em {url}. Inicie o llama-server no Termux e tente de novo.",
+  "es": "llama.cpp no responde en {url}. Inicia llama-server en Termux e inténtalo de nuevo.",
+  "fr": "llama.cpp ne répond pas à {url}. Lancez llama-server dans Termux et réessayez.",
+  "it": "llama.cpp non risponde su {url}. Avvia llama-server in Termux e riprova.",
+  "ja": "{url} で llama.cpp が応答しません。Termux で llama-server を起動して再試行してください。",
+  "ko": "{url}에서 llama.cpp가 응답하지 않습니다. Termux에서 llama-server를 시작한 뒤 다시 시도하세요.",
+  "zh": "llama.cpp 未在 {url} 响应。请在 Termux 中启动 llama-server，然后重试。"
+ },
+ "android_speech_unavailable": {
+  "en": "Speech recognition is not available on this device.",
+  "pt": "O reconhecimento de fala não está disponível neste aparelho.",
+  "es": "El reconocimiento de voz no está disponible en este dispositivo.",
+  "fr": "La reconnaissance vocale n'est pas disponible sur cet appareil.",
+  "it": "Il riconoscimento vocale non è disponibile su questo dispositivo.",
+  "ja": "この端末では音声認識を利用できません。",
+  "ko": "이 기기에서는 음성 인식을 사용할 수 없습니다.",
+  "zh": "此设备不支持语音识别。"
+ },
+ "android_test_connection": {
+  "en": "Test connection",
+  "pt": "Testar conexão",
+  "es": "Probar conexión",
+  "fr": "Tester la connexion",
+  "it": "Prova connessione",
+  "ja": "接続をテスト",
+  "ko": "연결 테스트",
+  "zh": "测试连接"
+ },
+ "android_connection_ok": {
+  "en": "Connected to llama.cpp.",
+  "pt": "Conectado ao llama.cpp.",
+  "es": "Conectado a llama.cpp.",
+  "fr": "Connecté à llama.cpp.",
+  "it": "Connesso a llama.cpp.",
+  "ja": "llama.cpp に接続しました。",
+  "ko": "llama.cpp에 연결되었습니다.",
+  "zh": "已连接到 llama.cpp。"
+ },
+ "android_connection_failed": {
+  "en": "Could not connect: {error}",
+  "pt": "Não foi possível conectar: {error}",
+  "es": "No se pudo conectar: {error}",
+  "fr": "Connexion impossible : {error}",
+  "it": "Impossibile connettersi: {error}",
+  "ja": "接続できませんでした: {error}",
+  "ko": "연결할 수 없습니다: {error}",
+  "zh": "无法连接：{error}"
+ },
+ "android_story_downloading": {
+  "en": "Downloading {current} of {total}: {title}",
+  "pt": "Baixando {current} de {total}: {title}",
+  "es": "Descargando {current} de {total}: {title}",
+  "fr": "Téléchargement de {current} sur {total} : {title}",
+  "it": "Download di {current} su {total}: {title}",
+  "ja": "{total} 件中 {current} 件をダウンロード中: {title}",
+  "ko": "{total}개 중 {current}개 다운로드 중: {title}",
+  "zh": "正在下载第 {current}/{total} 个：{title}"
+ },
+ "android_remove_stories_confirm": {
+  "en": "Delete the downloaded story audio from this phone?",
+  "pt": "Apagar os áudios de histórias baixados deste celular?",
+  "es": "¿Borrar los audios de historias descargados de este teléfono?",
+  "fr": "Supprimer les audios d'histoires téléchargés de ce téléphone ?",
+  "it": "Eliminare gli audio delle storie scaricati da questo telefono?",
+  "ja": "この端末にダウンロードした物語の音声を削除しますか？",
+  "ko": "이 휴대폰에 다운로드한 이야기 오디오를 삭제할까요?",
+  "zh": "要删除此手机上下载的故事音频吗？"
+ },
+ "android_no_history": {
+  "en": "No sessions yet.",
+  "pt": "Nenhuma sessão ainda.",
+  "es": "Aún no hay sesiones.",
+  "fr": "Aucune session pour l'instant.",
+  "it": "Ancora nessuna sessione.",
+  "ja": "まだセッションがありません。",
+  "ko": "아직 세션이 없습니다.",
+  "zh": "还没有练习记录。"
+ },
+ "android_history": {
+  "en": "Session history",
+  "pt": "Histórico de sessões",
+  "es": "Historial de sesiones",
+  "fr": "Historique des sessions",
+  "it": "Cronologia sessioni",
+  "ja": "セッション履歴",
+  "ko": "세션 기록",
+  "zh": "练习历史"
+ },
+ "android_saved": {
+  "en": "Saved to your conversation history.",
+  "pt": "Salvo no seu histórico de conversas.",
+  "es": "Guardado en tu historial de conversaciones.",
+  "fr": "Enregistré dans votre historique de conversations.",
+  "it": "Salvato nella cronologia delle conversazioni.",
+  "ja": "会話履歴に保存しました。",
+  "ko": "대화 기록에 저장되었습니다.",
+  "zh": "已保存到对话历史。"
+ },
+ "android_speed": {
+  "en": "Speed",
+  "pt": "Velocidade",
+  "es": "Velocidad",
+  "fr": "Vitesse",
+  "it": "Velocità",
+  "ja": "速度",
+  "ko": "속도",
+  "zh": "速度"
+ },
+ "android_tts_missing": {
+  "en": "The system voice for this language is not installed. Install it in the phone settings.",
+  "pt": "A voz do sistema para este idioma não está instalada. Instale nas configurações do celular.",
+  "es": "La voz del sistema para este idioma no está instalada. Instálala en los ajustes del teléfono.",
+  "fr": "La voix système pour cette langue n'est pas installée. Installez-la dans les réglages du téléphone.",
+  "it": "La voce di sistema per questa lingua non è installata. Installala nelle impostazioni del telefono.",
+  "ja": "この言語のシステム音声がインストールされていません。端末の設定からインストールしてください。",
+  "ko": "이 언어의 시스템 음성이 설치되어 있지 않습니다. 휴대폰 설정에서 설치하세요.",
+  "zh": "此语言的系统语音尚未安装，请在手机设置中安装。"
+ },
+ "android_diagnostics_empty": {
+  "en": "Nothing has been logged yet.",
+  "pt": "Nada foi registrado ainda.",
+  "es": "Todavía no se ha registrado nada.",
+  "fr": "Rien n'a encore été enregistré.",
+  "it": "Non è ancora stato registrato nulla.",
+  "ja": "まだ何も記録されていません。",
+  "ko": "아직 기록된 내용이 없습니다.",
+  "zh": "还没有记录任何内容。"
+ },
+ "android_open_tts_settings": {
+  "en": "Open text-to-speech settings",
+  "pt": "Abrir configurações de texto para fala",
+  "es": "Abrir ajustes de texto a voz",
+  "fr": "Ouvrir les réglages de synthèse vocale",
+  "it": "Apri impostazioni sintesi vocale",
+  "ja": "音声合成の設定を開く",
+  "ko": "텍스트 음성 변환 설정 열기",
+  "zh": "打开文字转语音设置"
+ },
+ "android_tts_unavailable": {
+  "en": "Text-to-speech is not available on this device.",
+  "pt": "A síntese de voz não está disponível neste aparelho.",
+  "es": "La síntesis de voz no está disponible en este dispositivo.",
+  "fr": "La synthèse vocale n'est pas disponible sur cet appareil.",
+  "it": "La sintesi vocale non è disponibile su questo dispositivo.",
+  "ja": "この端末では音声合成を利用できません。",
+  "ko": "이 기기에서는 텍스트 음성 변환을 사용할 수 없습니다.",
+  "zh": "此设备不支持文字转语音。"
+ },
+ "android_voice_hint": {
+  "en": "Voice practice uses the text-to-speech engine installed on the phone. Install more voices in the system settings.",
+  "pt": "A prática de voz usa o mecanismo de fala instalado no celular. Instale mais vozes nas configurações do sistema.",
+  "es": "La práctica de voz usa el motor de voz instalado en el teléfono. Instala más voces en los ajustes del sistema.",
+  "fr": "La pratique vocale utilise le moteur de synthèse installé sur le téléphone. Installez d'autres voix dans les réglages système.",
+  "it": "La pratica vocale usa il motore di sintesi installato sul telefono. Installa altre voci nelle impostazioni di sistema.",
+  "ja": "音声練習には端末にインストールされた音声合成エンジンを使います。システム設定から音声を追加できます。",
+  "ko": "음성 연습은 휴대폰에 설치된 텍스트 음성 변환 엔진을 사용합니다. 시스템 설정에서 음성을 더 설치할 수 있습니다.",
+  "zh": "语音练习使用手机上已安装的文字转语音引擎。可在系统设置中安装更多语音。"
+ },
+ "android_keep_awake": {
+  "en": "Keep screen on",
+  "pt": "Manter a tela ligada",
+  "es": "Mantener la pantalla encendida",
+  "fr": "Garder l'écran allumé",
+  "it": "Mantieni lo schermo acceso",
+  "ja": "画面を点灯したままにする",
+  "ko": "화면 켜짐 유지",
+  "zh": "保持屏幕常亮"
+ },
+ "android_keep_awake_desc": {
+  "en": "Prevent the screen from turning off while Parley is open.",
+  "pt": "Evita que a tela desligue enquanto o Parley estiver aberto.",
+  "es": "Evita que la pantalla se apague mientras Parley esté abierto.",
+  "fr": "Empêche l'écran de s'éteindre pendant que Parley est ouvert.",
+  "it": "Impedisce che lo schermo si spenga mentre Parley è aperto.",
+  "ja": "Parley を開いている間、画面が消えないようにします。",
+  "ko": "Parley가 열려 있는 동안 화면이 꺼지지 않도록 합니다.",
+  "zh": "打开 Parley 时防止屏幕熄灭。"
+ },
+ "android_on": {
+  "en": "On",
+  "pt": "Ligado",
+  "es": "Activado",
+  "fr": "Activé",
+  "it": "Attivo",
+  "ja": "オン",
+  "ko": "켜짐",
+  "zh": "开启"
+ },
+ "android_off": {
+  "en": "Off",
+  "pt": "Desligado",
+  "es": "Desactivado",
+  "fr": "Désactivé",
+  "it": "Disattivo",
+  "ja": "オフ",
+  "ko": "꺼짐",
+  "zh": "关闭"
+ }
+}

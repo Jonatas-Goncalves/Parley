@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Parley</string>
+    <string name="headline">Parley</string>
+    <string name="subtitle">Speak with a tutor running on this phone through llama.cpp.</string>
+    <string name="settings_title">Connection</string>
+    <string name="offline_setup">Set up offline with Termux</string>
+    <string name="base_url_hint">llama.cpp address, e.g. http://127.0.0.1:8080</string>
+    <string name="model_hint">Model name, usually local</string>
+    <string name="language_title">Practice language</string>
+    <string name="speak">🎙 Speak</string>
+    <string name="stop_listening">■ Stop listening</string>
+    <string name="send">Send</string>
+    <string name="typed_hint">Type a message if speaking is not convenient</string>
+    <string name="clear_history">Clear conversation</string>
+    <string name="listening">Listening…</string>
+    <string name="thinking">Thinking…</string>
+    <string name="ready">Ready</string>
+    <string name="speech_unavailable">Speech recognition is not available on this device.</string>
+    <string name="mic_denied">Microphone permission is required to speak.</string>
+    <string name="empty_settings">Enter the llama.cpp address and the model name.</string>
+    <string name="empty_message">Say something or type a message first.</string>
+    <string name="not_understood">I did not catch that. Please try again.</string>
+    <string name="conversation_start">You can start speaking whenever you are ready.</string>
+    <string name="error_prefix">Error: %1$s</string>
+    <string name="offline_title">Offline use with Termux</string>
+    <string name="offline_help">Termux runs llama.cpp directly on the phone, so Parley keeps working without Wi-Fi or a computer.\n\n1. Install Termux from F-Droid. The Play Store build is outdated.\n\n2. Open Termux and run:\npkg update &amp;&amp; pkg upgrade\npkg install llama-cpp\n\n3. Copy a GGUF model to the phone, for example qwen2.5-3b-instruct-q4_K_M.gguf, then run:\nllama-server -m /sdcard/Download/qwen2.5-3b-instruct-q4_K_M.gguf --host 127.0.0.1 --port 8080\n\n4. Keep this screen on http://127.0.0.1:8080 and model name local.\n\nKeep Termux running while you practice. The smaller 1.5B model is faster on phones; the 3B model gives better answers. Everything stays on the device.</string>
+    <string name="open_termux">Open Termux</string>
+    <string name="get_termux">Get Termux</string>
+    <string name="close">Close</string>
+</resources>

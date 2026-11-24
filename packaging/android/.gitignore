@@ -1,0 +1,10 @@
+# Android build outputs
+.gradle/
+local.properties
+app/build/
+build/
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
