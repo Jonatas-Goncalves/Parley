@@ -9,7 +9,7 @@ small language model served by Ollama or llama.cpp; Parley can detect, start and
 preload that service for you.
 
 <p align="center">
-  <img src="assets/icons/parley-256.png" alt="Parley icon" width="128">
+  <img src="assets/icons/parley-256.png" alt="Parley icon" width="256">
 </p>
 
 ## What you can do

@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parley — Local Voice-First Language Tutor</title>
+  <meta name="description" content="Parley is a local, privacy-first language tutor for Linux and Windows desktop powered by GTK 4, faster-whisper, Piper TTS, Ollama, and llama.cpp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+          },
+          colors: {
+            adw: {
+              darkBg: '#1e1e22',
+              darkCard: '#28282e',
+              darkElevated: '#32323a',
+              darkBorder: '#3d3d47',
+              lightBg: '#f6f5f4',
+              lightCard: '#ffffff',
+              lightElevated: '#ebebea',
+              lightBorder: '#dcdcdc',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @keyframes progressFill {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+    .carousel-progress-active {
+      animation: progressFill 4.5s linear forwards;
+    }
+    .carousel-progress-paused {
+      animation-play-state: paused;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-adw-lightBg text-slate-900 dark:bg-adw-darkBg dark:text-slate-100 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200 transition-colors duration-200">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 pointer-events-none opacity-0 translate-y-2 transition-all duration-200">
+    <div class="bg-slate-900 dark:bg-slate-800 text-white border border-slate-700 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2.5 text-sm font-medium">
+      <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+      <span id="toast-msg">Copied to clipboard</span>
+    </div>
+  </div>
+
+  <!-- Sticky Glassmorphism Navbar -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-adw-lightBg/85 dark:bg-adw-darkBg/85 border-b border-adw-lightBorder dark:border-adw-darkBorder">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            <path d="M9 10v4"/>
+            <path d="M12 8v8"/>
+            <path d="M15 10v4"/>
+          </svg>
+        </div>
+        <span class="font-bold text-lg tracking-tight">Parley</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#gallery" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Screenshots</a>
+        <a href="#features" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Features</a>
+        <a href="#models" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Models &amp; RAM</a>
+        <a href="#install" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Downloads</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" type="button" aria-label="Toggle Light/Dark Theme" title="Switch Light / Dark Theme"
+          class="p-2.5 rounded-xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 transition-colors">
+          <svg id="icon-sun" class="w-4 h-4 hidden dark:block text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5" />
+            <path stroke-linecap="round" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+          </svg>
+          <svg id="icon-moon" class="w-4 h-4 block dark:hidden text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+
+        <a href="https://github.com/Jonatas-Goncalves/Parley" target="_blank" rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-medium bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder hover:border-slate-400 dark:hover:border-slate-500 transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+          </svg>
+          <span>GitHub</span>
+        </a>
+
+        <a href="#install"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm shadow-emerald-600/25 transition-colors">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+          </svg>
+          <span>Download v1.0.0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="pt-12 pb-10 sm:pt-20 sm:pb-14 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <!-- Privacy Pill -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        100% Local • No Account • No Cloud • No Telemetry
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
+        Speak a new language.<br />
+        <span class="bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 bg-clip-text text-transparent">
+          Everything stays on your machine.
+        </span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+        <strong>Parley</strong> is a local voice-first language tutor for Linux and Windows desktop. You speak, Parley listens with <span class="font-medium text-slate-900 dark:text-white">faster-whisper</span>, thinks with a local LLM via <span class="font-medium text-slate-900 dark:text-white">Ollama</span> or <span class="font-medium text-slate-900 dark:text-white">llama.cpp</span>, and replies aloud with <span class="font-medium text-slate-900 dark:text-white">Piper</span> voices inside a native <span class="font-medium text-slate-900 dark:text-white">GTK 4</span> interface.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-3.5 mb-10">
+        <a href="#install"
+          class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-sm sm:text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/25 transition-all hover:-translate-y-0.5">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+          </svg>
+          Download v1.0.0
+        </a>
+        <a href="https://github.com/Jonatas-Goncalves/Parley/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl text-sm sm:text-base font-semibold bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder hover:border-emerald-500/50 transition-all">
+          <span>View Release Notes on GitHub</span>
+        </a>
+      </div>
+
+      <!-- 8 Supported Languages Bar -->
+      <div class="max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">
+          Practice in 8 Languages (UI language is independent)
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">🇧🇷 Português</span>
+          <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">🇺🇸 English</span>
+          <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">🇪🇸 Español</span>
+          <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">🇫🇷 Français</span>
+          <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">🇮🇹 Italiano</span>
+          <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">🇯🇵 日本語</span>
+          <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">🇰🇷 한국어</span>
+          <span class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">🇨🇳 中文 (Mandarin)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Auto-Playing Screenshot Showcase Carousel -->
+  <section id="gallery" class="py-10 sm:py-16 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Inside Parley</h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">
+            Auto-playing tour across all training modes, level testing, and GTK 4 themes.
+          </p>
+        </div>
+        <!-- Carousel Controls -->
+        <div class="flex items-center gap-2 self-start sm:self-auto">
+          <span id="slide-counter" class="text-xs font-mono font-semibold px-2.5 py-1.5 rounded-lg bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder text-slate-600 dark:text-slate-300">
+            01 / 08
+          </span>
+          <button id="carousel-play-pause" type="button" aria-label="Pause or resume slideshow"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder hover:border-emerald-500/50 transition-colors">
+            <svg id="icon-pause" class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 24 24">
+              <rect x="6" y="4" width="4" height="16" rx="1" />
+              <rect x="14" y="4" width="4" height="16" rx="1" />
+            </svg>
+            <svg id="icon-play" class="w-3.5 h-3.5 text-emerald-500 hidden" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span id="play-pause-label">Auto-play</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- GTK4-style Window Frame -->
+      <div id="carousel-container" class="rounded-2xl overflow-hidden bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder shadow-2xl shadow-black/15 dark:shadow-black/50">
+        <!-- Window Headerbar -->
+        <div class="h-11 px-4 bg-adw-lightElevated dark:bg-adw-darkElevated border-b border-adw-lightBorder dark:border-adw-darkBorder flex items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+          </div>
+          <div id="carousel-window-title" class="text-xs font-semibold text-slate-600 dark:text-slate-300 truncate">
+            1-Welcome.png — Welcome &amp; Onboarding
+          </div>
+          <button id="open-lightbox" type="button" title="Expand fullscreen"
+            class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full h-1 bg-slate-200 dark:bg-slate-800 overflow-hidden">
+          <div id="carousel-progress" class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 carousel-progress-active"></div>
+        </div>
+
+        <!-- Main Image Stage -->
+        <div class="relative bg-slate-950/5 dark:bg-black/40 aspect-[16/10] flex items-center justify-center overflow-hidden group">
+          <img id="carousel-img"
+            src="assets/images/1-Welcome.png"
+            alt="Parley Welcome & Onboarding"
+            class="w-full h-full object-contain cursor-zoom-in transition-opacity duration-300" />
+
+          <!-- Prev Button -->
+          <button id="carousel-prev" type="button" aria-label="Previous screenshot"
+            class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/75 hover:bg-slate-900 text-white border border-white/15 backdrop-blur-sm flex items-center justify-center shadow-lg transition-all opacity-90 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <!-- Next Button -->
+          <button id="carousel-next" type="button" aria-label="Next screenshot"
+            class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/75 hover:bg-slate-900 text-white border border-white/15 backdrop-blur-sm flex items-center justify-center shadow-lg transition-all opacity-90 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Caption Bar -->
+        <div class="px-5 py-4 bg-adw-lightCard dark:bg-adw-darkCard border-t border-adw-lightBorder dark:border-adw-darkBorder flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h3 id="carousel-title" class="font-bold text-base sm:text-lg text-slate-900 dark:text-white">
+              Welcome &amp; Onboarding
+            </h3>
+            <p id="carousel-desc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              Automatic hardware detection chooses the right tier and configures Ollama or llama.cpp on first launch.
+            </p>
+          </div>
+          <span class="text-xs text-slate-400 dark:text-slate-500 shrink-0">
+            Hover to pause • Click image to zoom
+          </span>
+        </div>
+
+        <!-- Thumbnail Strip -->
+        <div id="carousel-thumbs" class="p-3 bg-adw-lightElevated/60 dark:bg-adw-darkElevated/60 border-t border-adw-lightBorder dark:border-adw-darkBorder grid grid-cols-4 sm:grid-cols-8 gap-2">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid ("What you can do") -->
+  <section id="features" class="py-12 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="max-w-2xl mb-12">
+        <h2 class="text-2xl sm:text-4xl font-bold tracking-tight mb-3">What you can do</h2>
+        <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg">
+          Structured speaking, listening, reading, and vocabulary exercises designed to work offline from start to finish.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Feature 1: Voice Practice -->
+        <div class="p-6 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder hover:border-emerald-500/40 transition-colors">
+          <div class="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Voice Practice</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Role-play one of <strong>19 everyday situations</strong> with a tutor that replies in your target language. Switch between continuous listening or push-to-talk, speak or type, and read a concise note about your mistakes after each turn.
+          </p>
+        </div>
+
+        <!-- Feature 2: Pronunciation -->
+        <div class="p-6 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder hover:border-emerald-500/40 transition-colors">
+          <div class="w-11 h-11 rounded-xl bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Pronunciation</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Read a generated phrase out loud and inspect word-by-word recognition accuracy in real time. Words recognised cleanly turn <span class="text-emerald-600 dark:text-emerald-400 font-semibold">green</span>, while missed or mispronounced words turn <span class="text-rose-600 dark:text-rose-400 font-semibold">red</span>.
+          </p>
+        </div>
+
+        <!-- Feature 3: Spoken Stories -->
+        <div class="p-6 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder hover:border-emerald-500/40 transition-colors">
+          <div class="w-11 h-11 rounded-xl bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Spoken Stories</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Listen to <strong>49 short public-domain stories</strong> read aloud for natural listening immersion. Installers stay lean—the audio pack is downloaded only when you explicitly request it in Settings.
+          </p>
+        </div>
+
+        <!-- Feature 4: Complete the Sentence -->
+        <div class="p-6 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder hover:border-emerald-500/40 transition-colors">
+          <div class="w-11 h-11 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Complete the Sentence</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Listen to a short generated passage and fill in the missing words. The built-in player includes seek and playback speed controls, and clicking <strong>Finish</strong> grades every blank in green or red.
+          </p>
+        </div>
+
+        <!-- Feature 5: Conversation Progress -->
+        <div class="p-6 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder hover:border-emerald-500/40 transition-colors">
+          <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Conversation Progress</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Every session earns a personal <strong>0–100 score</strong> measured from speaking pace, pauses, vocabulary variety, answer length, and recogniser confidence—plus a guided level test inspired by IELTS and TOEFL speaking tasks.
+          </p>
+        </div>
+
+        <!-- Feature 6: Local Architecture -->
+        <div class="p-6 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder hover:border-emerald-500/40 transition-colors">
+          <div class="w-11 h-11 rounded-xl bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Zero Cloud, Zero Telemetry</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Speech recognition (<code class="text-xs font-mono px-1 py-0.5 rounded bg-slate-200 dark:bg-slate-800">faster-whisper</code>), LLM generation, and TTS (<code class="text-xs font-mono px-1 py-0.5 rounded bg-slate-200 dark:bg-slate-800">Piper</code>) run locally. Your audio, transcripts, and per-language history never leave your computer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- First Run, Backends & Quality Tiers -->
+  <section id="models" class="py-12 sm:py-20 px-4 sm:px-6 bg-adw-lightElevated/50 dark:bg-adw-darkCard/40 border-y border-adw-lightBorder dark:border-adw-darkBorder">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-3">First Run &amp; Local Model Tiers</h2>
+        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+          Onboarding detects your hardware, configures your preferred LLM backend, and preloads the model automatically from the second launch onward.
+        </p>
+      </div>
+
+      <!-- Backend Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+        <div class="p-6 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <h3 class="text-lg font-bold">Ollama</h3>
+            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">Easiest Option</span>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Install from <a href="https://ollama.com" target="_blank" rel="noopener noreferrer" class="underline decoration-emerald-500 hover:text-emerald-500">ollama.com</a>. Parley detects an already-running instance (reusing it without spawning duplicates), or starts Ollama and pulls your selected model automatically.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <h3 class="text-lg font-bold">llama.cpp</h3>
+            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-600 dark:text-teal-400">Lighter &amp; Self-Contained</span>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            No external daemon required. Parley downloads the GGUF model file once and manages <code class="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800">llama-server</code> itself, opening the session as soon as the model is loaded.
+          </p>
+        </div>
+      </div>
+
+      <!-- Quality Tiers Table -->
+      <div class="rounded-2xl overflow-hidden bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder shadow-sm">
+        <div class="px-6 py-4 border-b border-adw-lightBorder dark:border-adw-darkBorder flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h3 class="font-bold text-base">Recommended Quality Tiers</h3>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Smaller models respond faster; larger models make fewer grammar mistakes</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-adw-lightElevated/60 dark:bg-adw-darkElevated/60 text-slate-600 dark:text-slate-300 border-b border-adw-lightBorder dark:border-adw-darkBorder">
+                <th class="py-3.5 px-6 font-semibold">Tier</th>
+                <th class="py-3.5 px-6 font-semibold">Default Model</th>
+                <th class="py-3.5 px-6 font-semibold">System RAM</th>
+                <th class="py-3.5 px-6 font-semibold">Profile</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-adw-lightBorder dark:divide-adw-darkBorder">
+              <tr>
+                <td class="py-3.5 px-6 font-semibold">Weak</td>
+                <td class="py-3.5 px-6 font-mono text-xs sm:text-sm text-emerald-700 dark:text-emerald-400">qwen2.5:1.5b-instruct-q4_K_M</td>
+                <td class="py-3.5 px-6"><span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-200 dark:bg-slate-800">4 GB</span></td>
+                <td class="py-3.5 px-6 text-slate-600 dark:text-slate-300">Fastest inference on low-memory laptops</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-6 font-semibold">Medium</td>
+                <td class="py-3.5 px-6 font-mono text-xs sm:text-sm text-emerald-700 dark:text-emerald-400">qwen2.5:3b-instruct-q4_K_M</td>
+                <td class="py-3.5 px-6"><span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-200 dark:bg-slate-800">8 GB</span></td>
+                <td class="py-3.5 px-6 text-slate-600 dark:text-slate-300">Balanced speed and conversational fluency</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-6 font-semibold">Strong</td>
+                <td class="py-3.5 px-6 font-mono text-xs sm:text-sm text-emerald-700 dark:text-emerald-400">qwen2.5:7b-instruct-q4_K_M</td>
+                <td class="py-3.5 px-6"><span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-200 dark:bg-slate-800">16 GB</span></td>
+                <td class="py-3.5 px-6 text-slate-600 dark:text-slate-300">Highest grammar accuracy and richer role-play</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation & Downloads (Tabbed) -->
+  <section id="install" class="py-12 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl mb-8">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-3">Install &amp; Downloads (v1.0.0)</h2>
+        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+          Download prebuilt packages for Linux, Windows, or Android testing builds, or compile directly from source.
+        </p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div role="tablist" class="flex flex-wrap gap-2 mb-6">
+        <button type="button" role="tab" data-tab="linux" aria-selected="true"
+          class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-emerald-600 text-white shadow-sm transition-colors">
+          Linux Packages
+        </button>
+        <button type="button" role="tab" data-tab="windows" aria-selected="false"
+          class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 transition-colors">
+          Windows Installer
+        </button>
+        <button type="button" role="tab" data-tab="android" aria-selected="false"
+          class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 transition-colors">
+          Android APKs (Testing)
+        </button>
+        <button type="button" role="tab" data-tab="source" aria-selected="false"
+          class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 transition-colors">
+          Build from Source &amp; CJK Fonts
+        </button>
+      </div>
+
+      <!-- Tab Panel: Linux -->
+      <div id="panel-linux" class="tab-panel p-6 sm:p-8 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h3 class="text-xl font-bold">Linux Desktop Packages (v1.0.0)</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">
+              Direct downloads for openSUSE Tumbleweed (.rpm), universal AppImage, Flatpak, or all release assets.
+            </p>
+          </div>
+          <a href="https://github.com/Jonatas-Goncalves/Parley/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer"
+            class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-adw-lightElevated dark:bg-adw-darkElevated border border-adw-lightBorder dark:border-adw-darkBorder hover:border-emerald-500/50 transition-colors">
+            All v1.0.0 Release Files (.deb, Leap, etc.)
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+          <!-- RPM Tumbleweed -->
+          <div class="p-5 rounded-xl bg-adw-lightElevated/60 dark:bg-adw-darkElevated/60 border border-adw-lightBorder dark:border-adw-darkBorder flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="font-bold text-base">.rpm Package</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">noarch</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                For <strong>openSUSE Tumbleweed</strong>. Reuses system GTK 4, PyGObject, and Noto Sans CJK fonts.
+              </p>
+            </div>
+            <a href="https://github.com/Jonatas-Goncalves/Parley/releases/download/v1.0.0/parley-1.0.0-1.tumbleweed.noarch.rpm"
+              class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors">
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              Download .rpm
+            </a>
+          </div>
+
+          <!-- AppImage -->
+          <div class="p-5 rounded-xl bg-adw-lightElevated/60 dark:bg-adw-darkElevated/60 border border-adw-lightBorder dark:border-adw-darkBorder flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="font-bold text-base">AppImage</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-teal-500/15 text-teal-600 dark:text-teal-400">x86_64</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                Portable single-file binary for any Linux distro with bundled Noto Sans CJK fonts.
+              </p>
+            </div>
+            <a href="https://github.com/Jonatas-Goncalves/Parley/releases/download/v1.0.0/Parley-1.0.0-x86_64.AppImage"
+              class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors">
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              Download AppImage
+            </a>
+          </div>
+
+          <!-- Flatpak -->
+          <div class="p-5 rounded-xl bg-adw-lightElevated/60 dark:bg-adw-darkElevated/60 border border-adw-lightBorder dark:border-adw-darkBorder flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="font-bold text-base">Flatpak Bundle</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-cyan-500/15 text-cyan-600 dark:text-cyan-400">v1.0.0</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                Sandboxed desktop bundle with CJK fonts included (<code class="font-mono text-[11px]">flatpak install</code>).
+              </p>
+            </div>
+            <a href="https://github.com/Jonatas-Goncalves/Parley/releases/download/v1.0.0/Parley-1.0.0.flatpak"
+              class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors">
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              Download .flatpak
+            </a>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25 text-sm text-slate-700 dark:text-slate-200">
+          <strong>First-start note:</strong> Linux packages reuse your distro's native GTK 4 and PyGObject libraries. On first start, Parley creates a private Python environment in <code class="font-mono text-xs px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10">~/.local/share/parley/venv</code> and installs the speech dependencies there (one-time step requiring internet). See <a href="https://github.com/Jonatas-Goncalves/Parley/blob/master/docs/install-linux.md" target="_blank" rel="noopener noreferrer" class="underline font-semibold">docs/install-linux.md</a>.
+        </div>
+      </div>
+
+      <!-- Tab Panel: Windows -->
+      <div id="panel-windows" class="tab-panel hidden p-6 sm:p-8 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h3 class="text-xl font-bold">Windows Desktop Installer (v1.0.0)</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">
+              All-in-one setup executable with zero manual dependency configuration.
+            </p>
+          </div>
+          <a href="https://github.com/Jonatas-Goncalves/Parley/releases/download/v1.0.0/Parley-Setup-1.0.0.exe"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm shadow-emerald-600/20 transition-colors">
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            Download Parley-Setup-1.0.0.exe
+          </a>
+        </div>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Run <code class="font-mono text-xs px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800">Parley-Setup-1.0.0.exe</code> to install Parley on Windows. It bundles <strong>Python</strong>, <strong>GTK 4</strong>, <strong>Noto Sans CJK</strong>, and all speech recognition/synthesis libraries out of the box. For detailed instructions, check <a href="https://github.com/Jonatas-Goncalves/Parley/blob/master/docs/install-windows.md" target="_blank" rel="noopener noreferrer" class="underline font-semibold text-emerald-600 dark:text-emerald-400">docs/install-windows.md</a>.
+        </p>
+      </div>
+
+      <!-- Tab Panel: Android -->
+      <div id="panel-android" class="tab-panel hidden p-6 sm:p-8 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-3">
+            <h3 class="text-xl font-bold">Android APKs (v1.0.0)</h3>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
+              In Testing • Debug Preview
+            </span>
+          </div>
+        </div>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Preview debug APKs are now available for testing and feedback. Because Android support is still in active development, bugs, behavior changes, and device compatibility issues may occur:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <!-- Parley-llama APK -->
+          <div class="p-5 rounded-xl bg-adw-lightElevated/60 dark:bg-adw-darkElevated/60 border border-adw-lightBorder dark:border-adw-darkBorder flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <h4 class="font-bold text-base">Parley-llama</h4>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-amber-500/15 text-amber-600 dark:text-amber-400">debug.apk</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                Standalone Android APK with integrated <code class="font-mono text-xs">llama.cpp</code> inference built directly into the app.
+              </p>
+            </div>
+            <a href="https://github.com/Jonatas-Goncalves/Parley/releases/download/v1.0.0/Parley-llama-1.0.0-android-debug.apk"
+              class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors">
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              Download Parley-llama APK
+            </a>
+          </div>
+
+          <!-- Parley-Termux APK -->
+          <div class="p-5 rounded-xl bg-adw-lightElevated/60 dark:bg-adw-darkElevated/60 border border-adw-lightBorder dark:border-adw-darkBorder flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <h4 class="font-bold text-base">Parley-Termux</h4>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-amber-500/15 text-amber-600 dark:text-amber-400">debug.apk</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                Connects to a local <code class="font-mono text-xs">llama-server</code> instance running inside Termux on your device.
+              </p>
+            </div>
+            <a href="https://github.com/Jonatas-Goncalves/Parley/releases/download/v1.0.0/Parley-Termux-1.0.0-android-debug.apk"
+              class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors">
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              Download Parley-Termux APK
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Panel: Build from Source -->
+      <div id="panel-source" class="tab-panel hidden p-6 sm:p-8 rounded-2xl bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder space-y-6">
+        <div>
+          <h3 class="text-xl font-bold mb-1">Build &amp; Run from Source</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300">
+            Requires Python 3.11+, GTK 4, PyGObject, PortAudio, libsndfile, and FFmpeg.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- openSUSE -->
+          <div class="rounded-xl overflow-hidden border border-adw-lightBorder dark:border-adw-darkBorder">
+            <div class="px-4 py-2 bg-adw-lightElevated dark:bg-adw-darkElevated flex items-center justify-between text-xs font-semibold">
+              <span>openSUSE (zypper)</span>
+              <button type="button" class="copy-btn text-emerald-600 dark:text-emerald-400 hover:underline" data-copy="sudo zypper install python313 python313-gobject python313-gobject-Gdk gtk4 typelib-1_0-Gtk-4_0 libportaudio2 libsndfile1 ffmpeg google-noto-sans-cjk-fonts">Copy</button>
+            </div>
+            <pre class="p-4 text-xs font-mono overflow-x-auto bg-slate-950 text-slate-200">sudo zypper install python313 python313-gobject \
+  python313-gobject-Gdk gtk4 typelib-1_0-Gtk-4_0 \
+  libportaudio2 libsndfile1 ffmpeg google-noto-sans-cjk-fonts</pre>
+          </div>
+
+          <!-- Debian / Ubuntu -->
+          <div class="rounded-xl overflow-hidden border border-adw-lightBorder dark:border-adw-darkBorder">
+            <div class="px-4 py-2 bg-adw-lightElevated dark:bg-adw-darkElevated flex items-center justify-between text-xs font-semibold">
+              <span>Debian / Ubuntu (apt)</span>
+              <button type="button" class="copy-btn text-emerald-600 dark:text-emerald-400 hover:underline" data-copy="sudo apt install python3 python3-venv python3-gi gir1.2-gtk-4.0 libportaudio2 libsndfile1 ffmpeg fonts-noto-cjk">Copy</button>
+            </div>
+            <pre class="p-4 text-xs font-mono overflow-x-auto bg-slate-950 text-slate-200">sudo apt install python3 python3-venv python3-gi \
+  gir1.2-gtk-4.0 libportaudio2 libsndfile1 \
+  ffmpeg fonts-noto-cjk</pre>
+          </div>
+        </div>
+
+        <!-- Run & Test -->
+        <div class="rounded-xl overflow-hidden border border-adw-lightBorder dark:border-adw-darkBorder">
+          <div class="px-4 py-2 bg-adw-lightElevated dark:bg-adw-darkElevated flex items-center justify-between text-xs font-semibold">
+            <span>Virtual Environment, Run &amp; Tests</span>
+            <button type="button" class="copy-btn text-emerald-600 dark:text-emerald-400 hover:underline" data-copy="python3 -m venv --system-site-packages .venv && . .venv/bin/activate && pip install -e '.[dev]' && python -m parley">Copy</button>
+          </div>
+          <pre class="p-4 text-xs font-mono overflow-x-auto bg-slate-950 text-slate-200">python3 -m venv --system-site-packages .venv
+. .venv/bin/activate
+pip install -e ".[dev]"
+python -m parley
+
+# Lint &amp; test suite
+ruff check src scripts tests packaging
+pytest</pre>
+        </div>
+
+        <p class="text-xs text-slate-500 dark:text-slate-400">
+          Tip: On headless machines use <code class="font-mono">GDK_BACKEND=x11</code> with an X server. For Fedora/Arch CJK fonts, install <code class="font-mono">google-noto-sans-cjk-fonts</code> or <code class="font-mono">noto-fonts-cjk</code>. Packaging guides live in <a href="https://github.com/Jonatas-Goncalves/Parley/blob/master/docs/build.md" target="_blank" rel="noopener noreferrer" class="underline">docs/build.md</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-adw-lightBorder dark:border-adw-darkBorder py-10 px-4 sm:px-6 text-sm text-slate-600 dark:text-slate-400">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <div class="font-bold text-slate-900 dark:text-white mb-1">Parley</div>
+        <p class="text-xs sm:text-sm">
+          Released under the <a href="https://github.com/Jonatas-Goncalves/Parley/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" class="underline hover:text-emerald-500">MIT License</a>. Spoken Stories recordings are public-domain works read aloud for personal listening practice.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm font-medium">
+        <a href="https://github.com/Jonatas-Goncalves/Parley" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 transition-colors">Repository</a>
+        <a href="https://github.com/Jonatas-Goncalves/Parley/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 transition-colors">Releases (v1.0.0)</a>
+        <a href="https://github.com/Jonatas-Goncalves/Parley/blob/master/docs/install-linux.md" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 transition-colors">Linux Docs</a>
+        <a href="https://github.com/Jonatas-Goncalves/Parley/blob/master/docs/install-windows.md" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 transition-colors">Windows Docs</a>
+        <a href="https://github.com/Jonatas-Goncalves/Parley/blob/master/docs/build.md" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 transition-colors">Build Guide</a>
+        <a href="https://github.com/Jonatas-Goncalves/Parley/blob/master/docs/stories.md" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 transition-colors">Stories Docs</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <button id="lightbox-close" type="button" aria-label="Close fullscreen preview"
+      class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="max-w-6xl w-full flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="Expanded screenshot" class="max-h-[82vh] w-auto rounded-xl shadow-2xl border border-white/10" />
+      <p id="lightbox-caption" class="text-white/90 text-sm font-medium mt-3 text-center"></p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // 1. Screenshot Gallery Data (exact paths in Parley/assets/images/)
+      const RAW_GITHUB_BASE = 'https://raw.githubusercontent.com/Jonatas-Goncalves/Parley/master/assets/images/';
+      const slides = [
+        {
+          file: '1-Welcome.png',
+          title: 'Welcome & Onboarding',
+          desc: 'Automatic hardware detection chooses the right tier and configures Ollama or llama.cpp on first launch.'
+        },
+        {
+          file: '2-Pratice.png',
+          title: 'Practice Hub',
+          desc: 'Choose your practice language, interface language, and training mode from a clean GTK 4 dashboard.'
+        },
+        {
+          file: '3-Pronunciation.png',
+          title: 'Pronunciation Check',
+          desc: 'Read a generated phrase aloud and see instant word-by-word green and red speech recognition feedback.'
+        },
+        {
+          file: '4-CompleteSentence.png',
+          title: 'Complete the Sentence',
+          desc: 'Listen with seek and playback speed controls, fill in the blanks, and verify each answer in green or red.'
+        },
+        {
+          file: '5-VoicePratice.png',
+          title: 'Voice Practice',
+          desc: 'Role-play 19 everyday situations with continuous listening or push-to-talk and mistake notes after every turn.'
+        },
+        {
+          file: '6-SpokenStories.png',
+          title: 'Spoken Stories',
+          desc: 'Stream or download 49 public-domain stories read aloud for personal listening comprehension practice.'
+        },
+        {
+          file: '7-Test.png',
+          title: 'Guided Level Test & Progress',
+          desc: 'Track per-language history and earn a personal 0–100 score inspired by IELTS and TOEFL speaking tasks.'
+        },
+        {
+          file: '8-LightTheme.png',
+          title: 'Native GTK 4 Light Theme',
+          desc: 'Adapts seamlessly to your desktop Light or Dark style preference.'
+        }
+      ];
+
+      function loadSlideImage(imgEl, filename) {
+        const sources = [
+          'assets/images/' + filename,
+          '../assets/images/' + filename,
+          RAW_GITHUB_BASE + filename
+        ];
+        let attempt = 0;
+        imgEl.onerror = function () {
+          attempt++;
+          if (attempt < sources.length) {
+            imgEl.src = sources[attempt];
+          } else {
+            imgEl.onerror = null;
+          }
+        };
+        imgEl.src = sources[0];
+      }
+
+      let currentIndex = 0;
+      let isPlaying = true;
+      let isHovered = false;
+      let timerId = null;
+      const INTERVAL_MS = 4500;
+
+      const imgMain = document.getElementById('carousel-img');
+      const titleEl = document.getElementById('carousel-title');
+      const descEl = document.getElementById('carousel-desc');
+      const winTitleEl = document.getElementById('carousel-window-title');
+      const counterEl = document.getElementById('slide-counter');
+      const progressEl = document.getElementById('carousel-progress');
+      const thumbsContainer = document.getElementById('carousel-thumbs');
+      const containerEl = document.getElementById('carousel-container');
+      const playPauseBtn = document.getElementById('carousel-play-pause');
+      const playPauseLabel = document.getElementById('play-pause-label');
+      const iconPause = document.getElementById('icon-pause');
+      const iconPlay = document.getElementById('icon-play');
+
+      slides.forEach((slide, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'View ' + slide.title);
+        btn.className = 'thumb-btn relative rounded-lg overflow-hidden aspect-[16/10] border-2 border-transparent opacity-60 hover:opacity-100 transition-all focus:outline-none';
+        const thumbImg = document.createElement('img');
+        thumbImg.alt = slide.title;
+        thumbImg.className = 'w-full h-full object-cover';
+        loadSlideImage(thumbImg, slide.file);
+        btn.appendChild(thumbImg);
+        btn.addEventListener('click', () => {
+          goToSlide(idx);
+          resetTimer();
+        });
+        thumbsContainer.appendChild(btn);
+      });
+
+      function restartProgressAnimation() {
+        progressEl.classList.remove('carousel-progress-active');
+        void progressEl.offsetWidth;
+        if (isPlaying && !isHovered) {
+          progressEl.classList.add('carousel-progress-active');
+          progressEl.classList.remove('carousel-progress-paused');
+        }
+      }
+
+      function goToSlide(index) {
+        currentIndex = (index + slides.length) % slides.length;
+        const slide = slides[currentIndex];
+
+        loadSlideImage(imgMain, slide.file);
+        imgMain.alt = slide.title;
+        titleEl.textContent = slide.title;
+        descEl.textContent = slide.desc;
+        winTitleEl.textContent = slide.file + ' — ' + slide.title;
+        counterEl.textContent = String(currentIndex + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+
+        const thumbBtns = thumbsContainer.querySelectorAll('.thumb-btn');
+        thumbBtns.forEach((btn, idx) => {
+          if (idx === currentIndex) {
+            btn.classList.add('border-emerald-500', 'opacity-100', 'scale-[1.03]');
+            btn.classList.remove('border-transparent', 'opacity-60');
+          } else {
+            btn.classList.remove('border-emerald-500', 'opacity-100', 'scale-[1.03]');
+            btn.classList.add('border-transparent', 'opacity-60');
+          }
+        });
+
+        restartProgressAnimation();
+      }
+
+      function startTimer() {
+        stopTimer();
+        if (!isPlaying) return;
+        timerId = setInterval(() => {
+          if (!isHovered) {
+            goToSlide(currentIndex + 1);
+          }
+        }, INTERVAL_MS);
+      }
+
+      function stopTimer() {
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      }
+
+      function resetTimer() {
+        if (isPlaying) {
+          startTimer();
+        }
+      }
+
+      document.getElementById('carousel-prev').addEventListener('click', () => {
+        goToSlide(currentIndex - 1);
+        resetTimer();
+      });
+
+      document.getElementById('carousel-next').addEventListener('click', () => {
+        goToSlide(currentIndex + 1);
+        resetTimer();
+      });
+
+      playPauseBtn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          iconPause.classList.remove('hidden');
+          iconPlay.classList.add('hidden');
+          playPauseLabel.textContent = 'Auto-play';
+          restartProgressAnimation();
+          startTimer();
+        } else {
+          iconPause.classList.add('hidden');
+          iconPlay.classList.remove('hidden');
+          playPauseLabel.textContent = 'Paused';
+          progressEl.classList.remove('carousel-progress-active');
+          stopTimer();
+        }
+      });
+
+      containerEl.addEventListener('mouseenter', () => {
+        isHovered = true;
+        progressEl.classList.add('carousel-progress-paused');
+      });
+
+      containerEl.addEventListener('mouseleave', () => {
+        isHovered = false;
+        if (isPlaying) {
+          progressEl.classList.remove('carousel-progress-paused');
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+          goToSlide(currentIndex - 1);
+          resetTimer();
+        } else if (e.key === 'ArrowRight') {
+          goToSlide(currentIndex + 1);
+          resetTimer();
+        }
+      });
+
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+
+      function openLightbox() {
+        const slide = slides[currentIndex];
+        loadSlideImage(lightboxImg, slide.file);
+        lightboxCaption.textContent = slide.title + ' — ' + slide.desc;
+        lightbox.classList.remove('hidden');
+        isHovered = true;
+        progressEl.classList.add('carousel-progress-paused');
+      }
+
+      function closeLightbox() {
+        if (!lightbox.classList.contains('hidden')) {
+          lightbox.classList.add('hidden');
+          isHovered = false;
+          if (isPlaying) {
+            progressEl.classList.remove('carousel-progress-paused');
+          }
+        }
+      }
+
+      imgMain.addEventListener('click', openLightbox);
+      document.getElementById('open-lightbox').addEventListener('click', openLightbox);
+      document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      goToSlide(0);
+      startTimer();
+
+      // 2. Dark / Light Theme Toggle
+      const htmlEl = document.documentElement;
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const savedTheme = localStorage.getItem('parley-theme');
+      if (savedTheme === 'light') {
+        htmlEl.classList.remove('dark');
+      } else {
+        htmlEl.classList.add('dark');
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const isDark = htmlEl.classList.toggle('dark');
+        localStorage.setItem('parley-theme', isDark ? 'dark' : 'light');
+      });
+
+      // 3. Install Tabs
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-tab');
+          tabBtns.forEach((b) => {
+            const active = b === btn;
+            b.setAttribute('aria-selected', active ? 'true' : 'false');
+            if (active) {
+              b.className = 'tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-emerald-600 text-white shadow-sm transition-colors';
+            } else {
+              b.className = 'tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-adw-lightCard dark:bg-adw-darkCard border border-adw-lightBorder dark:border-adw-darkBorder text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 transition-colors';
+            }
+          });
+          tabPanels.forEach((panel) => {
+            if (panel.id === 'panel-' + target) {
+              panel.classList.remove('hidden');
+            } else {
+              panel.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // 4. Copy to Clipboard with Toast Feedback
+      const toastEl = document.getElementById('toast');
+      const toastMsgEl = document.getElementById('toast-msg');
+      let toastTimer = null;
+
+      function showToast(msg) {
+        toastMsgEl.textContent = msg;
+        toastEl.classList.remove('opacity-0', 'translate-y-2');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastEl.classList.add('opacity-0', 'translate-y-2');
+        }, 2200);
+      }
+
+      document.querySelectorAll('.copy-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const text = btn.getAttribute('data-copy');
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            document.execCommand('copy');
+            showToast('Command copied to clipboard');
+          } catch (err) {
+            showToast('Unable to copy automatically');
+          }
+          document.body.removeChild(textarea);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
