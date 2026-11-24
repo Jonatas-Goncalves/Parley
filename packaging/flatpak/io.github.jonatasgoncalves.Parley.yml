@@ -1,0 +1,96 @@
+app-id: io.github.jonatasgoncalves.Parley
+runtime: org.gnome.Platform
+runtime-version: "48"
+sdk: org.gnome.Sdk
+command: parley
+
+finish-args:
+  - --share=network
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --device=dri
+  - --env=PYTHONUNBUFFERED=1
+  - --env=PYTHONDONTWRITEBYTECODE=1
+  - --env=PYTHONPATH=/app/share/parley/app/src
+
+build-options:
+  strip: true
+
+modules:
+  - name: noto-cjk
+    buildsystem: simple
+    build-commands:
+      - install -d /app/share/fonts/noto-cjk
+      - install -m 0644 NotoSansCJK-Regular.ttc /app/share/fonts/noto-cjk/
+      - install -m 0644 LICENSE.txt /app/share/fonts/noto-cjk/
+    sources:
+      - type: file
+        url: https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTC/NotoSansCJK-Regular.ttc
+        sha256: b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a
+        dest-filename: NotoSansCJK-Regular.ttc
+      - type: file
+        url: https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/LICENSE
+        sha256: 6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2
+        dest-filename: LICENSE.txt
+
+  - name: parley-python-deps
+    buildsystem: simple
+    build-options:
+      build-args:
+        - --share=network
+      env:
+        PIP_DISABLE_PIP_VERSION_CHECK: "1"
+        PIP_NO_INPUT: "1"
+    build-commands:
+      - python3 -m ensurepip --upgrade || true
+      - python3 -m pip install --prefix=/app --break-system-packages
+        --prefer-binary --no-cache-dir -r requirements.txt
+    sources:
+      - type: file
+        path: ../../requirements.txt
+
+  - name: parley
+    buildsystem: simple
+    build-commands:
+      - install -d /app/share/parley/app
+      - tar -C . -cf - --exclude=__pycache__ --exclude=*.pyc
+        src requirements.txt README.md LICENSE
+        | tar -C /app/share/parley/app -xf -
+      - install -d /app/share/parley/app/assets
+      - install -m 0644 assets/cacert.pem /app/share/parley/app/assets/cacert.pem
+      - cp -a assets/icons /app/share/parley/app/assets/icons
+      - install -Dm755 packaging/flatpak/parley-wrapper.sh /app/bin/parley
+      - install -Dm644 packaging/linux/io.github.jonatasgoncalves.Parley.desktop
+        /app/share/applications/io.github.jonatasgoncalves.Parley.desktop
+      - install -Dm644 packaging/linux/io.github.jonatasgoncalves.Parley.metainfo.xml
+        /app/share/metainfo/io.github.jonatasgoncalves.Parley.metainfo.xml
+      - |
+        for size in 16 32 48 64 128 256 512; do
+            install -Dm644 "assets/icons/parley-${size}.png" \
+                "/app/share/icons/hicolor/${size}x${size}/apps/io.github.jonatasgoncalves.Parley.png"
+        done
+    sources:
+      - type: dir
+        path: ../..
+        skip:
+          - .git
+          - .github
+          - Github
+          - build
+          - dist
+          - models
+          - cache
+          - docs
+          - tests
+          - assets/stories
+          - assets/Spoken Stories
+          - .pytest_cache
+          - .ruff_cache
+          - testdisk.log
+          - conversa.html
+          - conversa.md
+          - sessao.json
+          - session-ses_e9b0.md
+          - packaging/windows/.conda

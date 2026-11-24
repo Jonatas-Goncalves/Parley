@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.jonatasgoncalves.Parley</id>
+  <name>Parley</name>
+  <summary>Practice languages locally with voice and text</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>
+      Parley is a local language tutor that combines a language model, speech
+      recognition and speech synthesis. It supports Portuguese, English,
+      Spanish, French, Italian, Japanese, Korean and Mandarin Chinese, and keeps
+      conversations, audio and vocabulary on your machine.
+    </p>
+    <ul>
+      <li>Voice and text conversation with 19 role-play scenarios</li>
+      <li>Native-language notes and vocabulary explanations</li>
+      <li>Pronunciation practice and sentence-completion exercises</li>
+      <li>Spoken stories with a downloadable audio pack</li>
+      <li>No accounts, cloud APIs or telemetry</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">io.github.jonatasgoncalves.Parley.desktop</launchable>
+  <provides>
+    <binary>parley</binary>
+  </provides>
+  <url type="homepage">https://github.com/Jonatas-Goncalves/Parley</url>
+  <url type="bugtracker">https://github.com/Jonatas-Goncalves/Parley/issues</url>
+  <developer id="io.github.jonatasgoncalves">
+    <name>Parley contributors</name>
+  </developer>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0.0" date="2026-11-23">
+      <description>
+        <p>
+          PC 1.0.0 release: improved model/setup flow, Whisper model guidance,
+          Speak Replies default on, level test with 15 questions, and packaging
+          updates for Linux and Windows installers.
+        </p>
+      </description>
+    </release>
+    <release version="0.3.1" date="2026-11-17">
+      <description>
+        <p>
+          Cleaner pronunciation phrases, conversation prompts that do not
+          repeat earlier questions, bundled or declared Noto Sans CJK fonts,
+          translated CJK home buttons, and Android support for llama.cpp and
+          offline use through Termux.
+        </p>
+      </description>
+    </release>
+    <release version="0.3.0" date="2026-11-16">
+      <description>
+        <p>
+          Conversation scoring with per-language progress and a guided level
+          test, system-following themes, model download confirmation, voice
+          removal and CJK font detection.
+        </p>
+      </description>
+    </release>
+    <release version="0.2.0" date="2026-11-16">
+      <description>
+        <p>First GTK 4 release with Italian, spoken stories and on-demand audio.</p>
+      </description>
+    </release>
+  </releases>
+</component>

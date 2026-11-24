@@ -1,0 +1,21 @@
+/* Light palette. Loaded before style.css. */
+
+@define-color parley_accent #2f6fd0;
+@define-color parley_on_accent #ffffff;
+@define-color parley_accent_soft #e6eefc;
+@define-color parley_surface #ffffff;
+@define-color parley_surface_alt #e9edf4;
+@define-color parley_text #111827;
+@define-color parley_muted #465266;
+@define-color parley_good #146c43;
+@define-color parley_bad #b42318;
+@define-color parley_warning #8a5a00;
+@define-color parley_note_bg #fff3d1;
+@define-color parley_note_border #dfc27c;
+@define-color parley_note_text #533d00;
+@define-color parley_pill_beginner_bg #d5efde;
+@define-color parley_pill_beginner_text #0f5f33;
+@define-color parley_pill_intermediate_bg #fbe8bf;
+@define-color parley_pill_intermediate_text #6d4300;
+@define-color parley_pill_advanced_bg #f9dade;
+@define-color parley_pill_advanced_text #8c1525;

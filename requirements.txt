@@ -1,0 +1,16 @@
+# Parley runtime dependencies.
+#
+# PyGObject (the GTK bindings) is provided by the operating system on Linux.
+# On openSUSE: sudo zypper install python313-gobject python313-gobject-Gdk gtk4 typelib-1_0-Gtk-4_0
+# On Windows the installer bundles GTK through conda-forge, so nothing is
+# installed from this file.
+numpy>=1.24
+sounddevice>=0.4.6
+soundfile>=0.12
+requests>=2.31,<3
+faster-whisper>=1.1,<2
+av>=14,<19
+piper-tts>=1.2,<2
+
+# Japanese speech uses an extra phoneme backend for Piper.
+pyopenjtalk>=0.4,<1 ; python_version >= "3.11"

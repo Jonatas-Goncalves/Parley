@@ -1,0 +1,183 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Release tag to upload assets to (leave empty to create/update v<version>-<sha>)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.event.release.tag_name || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  quality:
+    uses: ./.github/workflows/ci.yml
+
+  deb:
+    needs: quality
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+      - name: Build the Debian package
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev fakeroot
+          bash packaging/linux/build-deb.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parley-deb
+          path: dist/*.deb
+          if-no-files-found: error
+
+  rpm-leap:
+    needs: quality
+    runs-on: ubuntu-24.04
+    container: opensuse/leap:15.6
+    steps:
+      - name: Install build tools
+        run: |
+          zypper --non-interactive --gpg-auto-import-keys refresh
+          zypper --non-interactive install -y git tar gzip rpm-build
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+      - name: Build the Leap RPM
+        run: bash packaging/linux/build-rpm.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parley-rpm-leap
+          path: dist/*.rpm
+          if-no-files-found: error
+
+  rpm-tumbleweed:
+    needs: quality
+    runs-on: ubuntu-24.04
+    container: opensuse/tumbleweed:latest
+    steps:
+      - name: Install build tools
+        run: |
+          zypper --non-interactive --gpg-auto-import-keys refresh
+          zypper --non-interactive install -y git tar gzip rpm-build
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+      - name: Build the Tumbleweed RPM
+        run: bash packaging/linux/build-rpm.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parley-rpm-tumbleweed
+          path: dist/*.rpm
+          if-no-files-found: error
+
+  appimage:
+    needs: quality
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+      - name: Build the AppImage
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl file libfuse2
+          bash packaging/appimage/build-appimage.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parley-appimage
+          path: dist/*.AppImage
+          if-no-files-found: error
+
+  flatpak:
+    needs: quality
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+      - name: Install flatpak-builder
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder
+      - name: Build the Flatpak bundle
+        run: bash packaging/flatpak/build-flatpak.sh --export
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parley-flatpak
+          path: dist/*.flatpak
+          if-no-files-found: error
+
+  windows:
+    needs: quality
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+      - name: Build the application
+        run: pwsh -ExecutionPolicy Bypass -File packaging/windows/install-windows.ps1
+      - name: Build the installer
+        run: pwsh -ExecutionPolicy Bypass -File packaging/windows/build-installer.ps1 -SkipBuild
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parley-windows
+          path: |
+            packaging/windows/release/*.exe
+            packaging/windows/release/*.sha256
+          if-no-files-found: error
+
+  release:
+    needs: [deb, rpm-leap, rpm-tumbleweed, appimage, flatpak, windows]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Read the version and resolve the release tag
+        id: meta
+        shell: bash
+        run: |
+          version="$(sed -n 's/^version = "\(.*\)"/\1/p' pyproject.toml | head -n1)"
+          short_sha="$(git rev-parse --short HEAD)"
+          tag="${{ github.event.release.tag_name }}"
+          if [ -z "$tag" ]; then
+            tag="${{ inputs.tag_name }}"
+          fi
+          if [ -z "$tag" ]; then
+            tag="v${version}-${short_sha}"
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "Building $version ($short_sha) for $tag"
+
+      - name: Write checksums
+        run: |
+          cd artifacts
+          sha256sum * > SHA256SUMS
+          cat SHA256SUMS
+
+      - name: Upload assets to the GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          files: artifacts/*
+          fail_on_unmatched_files: true
+          overwrite_files: true
+
+      - name: Verify the assets
+        run: ls -lh artifacts

@@ -1,0 +1,115 @@
+#!/bin/sh
+# Parley launcher used by the .deb, .rpm and AppImage builds.
+#
+# The interface and the speech stack are Python packages. Distributions provide
+# GTK and PyGObject, while the remaining packages live in a private environment
+# that this launcher creates on first start.
+
+set -eu
+
+PREFIX="${PARLEY_PREFIX:-/usr/lib/parley}"
+APP_DIR="$PREFIX/app"
+BOOTSTRAP="$PREFIX/bootstrap.py"
+REQUIREMENTS="$APP_DIR/requirements.txt"
+
+DATA_DIR="${PARLEY_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/parley}"
+export PARLEY_DATA_DIR="$DATA_DIR"
+export PYTHONPATH="$APP_DIR/src${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONUNBUFFERED=1
+export PYTHONDONTWRITEBYTECODE=1
+
+if [ -z "${SSL_CERT_FILE:-}" ] \
+    && [ ! -e /etc/ssl/ca-bundle.pem ] \
+    && [ ! -e /var/lib/ca-certificates/ca-bundle.pem ] \
+    && [ -f "$APP_DIR/assets/cacert.pem" ]; then
+    export SSL_CERT_FILE="$APP_DIR/assets/cacert.pem"
+    export REQUESTS_CA_BUNDLE="$APP_DIR/assets/cacert.pem"
+    export CURL_CA_BUNDLE="$APP_DIR/assets/cacert.pem"
+    export PIP_CERT="$APP_DIR/assets/cacert.pem"
+fi
+
+SYSTEM_PYTHON="${PARLEY_SYSTEM_PYTHON:-python3}"
+VENV="$DATA_DIR/venv"
+STAMP_FILE="$VENV/.parley-requirements"
+
+usage() {
+    cat <<'EOF'
+Usage: parley [options]
+
+Parley is a local, voice-first language tutor.
+
+Options:
+  -h, --help       Show this help and exit
+  -V, --version    Show the version and exit
+  --debug          Print diagnostics and enable verbose logs
+  --debug-info     Print diagnostics and exit
+
+The interface starts when no option is given. Story audio can be read from a
+checkout during development with PARLEY_STORIES_DIR=/path/to/assets/stories.
+EOF
+}
+
+for argument in "$@"; do
+    case "$argument" in
+        -h|--help|help)
+            usage
+            exit 0
+            ;;
+        -V|--version|version)
+            app_version="$(cat "$PREFIX/VERSION" 2>/dev/null || true)"
+            printf 'Parley %s\n' "${app_version:-unknown}"
+            exit 0
+            ;;
+        --debug-info)
+            PYTHONPATH="$APP_DIR/src" exec "$SYSTEM_PYTHON" -m parley --debug-info
+            ;;
+    esac
+done
+
+if [ ! -f "$REQUIREMENTS" ] || [ ! -f "$BOOTSTRAP" ]; then
+    printf 'Parley is incomplete: %s or %s is missing.\n' \
+        "$REQUIREMENTS" "$BOOTSTRAP" >&2
+    exit 1
+fi
+
+if ! command -v "$SYSTEM_PYTHON" >/dev/null 2>&1; then
+    printf 'Parley needs Python 3.11 or newer (%s was not found).\n' \
+        "$SYSTEM_PYTHON" >&2
+    exit 1
+fi
+
+if ! "$SYSTEM_PYTHON" -c 'import gi' >/dev/null 2>&1; then
+    printf 'Parley needs PyGObject and GTK 4. Install them with your package manager.\n' >&2
+    printf 'See https://github.com/Jonatas-Goncalves/Parley/blob/master/docs/install-linux.md\n' >&2
+    exit 1
+fi
+
+requirements_stamp() {
+    if command -v sha256sum >/dev/null 2>&1; then
+        sha256sum "$REQUIREMENTS" | cut -d' ' -f1
+    else
+        cksum "$REQUIREMENTS" | cut -d' ' -f1
+    fi
+}
+
+need_bootstrap=0
+if [ ! -x "$VENV/bin/python" ]; then
+    need_bootstrap=1
+elif [ ! -f "$STAMP_FILE" ]; then
+    need_bootstrap=1
+elif [ "$(cat "$STAMP_FILE" 2>/dev/null || true)" != "$(requirements_stamp)" ]; then
+    need_bootstrap=1
+fi
+
+if [ "$need_bootstrap" -eq 1 ]; then
+    if ! "$SYSTEM_PYTHON" "$BOOTSTRAP" \
+        --app-dir "$APP_DIR" \
+        --venv "$VENV" \
+        --requirements "$REQUIREMENTS"; then
+        printf 'Parley could not prepare its Python environment.\n' >&2
+        printf 'See %s/logs/bootstrap.log for details.\n' "$DATA_DIR" >&2
+        exit 1
+    fi
+fi
+
+exec "$VENV/bin/python" -m parley "$@"

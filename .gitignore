@@ -1,0 +1,67 @@
+# Byte-compiled files and caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+build/
+dist/
+
+# Local runtime data: models, cache, downloaded audio and preferences
+models/
+cache/
+exports/
+logs/
+config.json
+
+# Fonts downloaded by the Windows and AppImage build scripts
+assets/fonts/
+
+# Temporary Android SDK copy used when building the APK locally
+.android-sdk/
+
+# Story audio is committed on purpose under assets/stories, but the unpacked
+# source folder and generated part files are not.
+assets/Spoken\ Stories/
+assets/stories/*.part
+
+# Local clone used by scripts/sync-github.sh
+Github/
+
+# Local rollback snapshots created before experimental work
+.checkpoints/
+
+# Packaging output
+build/
+dist/
+packaging/linux/deb/
+packaging/linux/rpm/
+packaging/appimage/AppDir/
+packaging/flatpak/build/
+packaging/windows/.conda/
+packaging/windows/.micromamba/
+packaging/windows/build/
+packaging/windows/dist/
+packaging/windows/release/
+*.AppImage
+*.flatpak
+*.deb
+*.rpm
+*.exe
+*.sha256
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local scratch files from the previous prototype
+.aider.chat.history.md
+.pnpm-store/
+testdisk.log
+session-ses_*.md
+sessao.json
+conversa.html
+conversa.md

@@ -1,0 +1,332 @@
+/* Parley interface styles. Works on top of the GTK 4 default theme.
+ *
+ * Palette names come from theme-light.css or theme-dark.css, which are loaded
+ * first by the application.
+ */
+
+window.parley {
+    background: @parley_surface_alt;
+    color: @parley_text;
+}
+
+headerbar.parley-header {
+    background: @parley_surface;
+    color: @parley_text;
+    border-bottom: 1px solid alpha(@parley_text, 0.12);
+    min-height: 46px;
+}
+
+button.floating-back {
+    background: @parley_surface;
+    color: @parley_text;
+    border: 1px solid alpha(@parley_text, 0.16);
+    border-radius: 12px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 6px;
+    box-shadow: 0 2px 6px alpha(@parley_text, 0.16);
+}
+
+button.floating-back:hover {
+    background: @parley_accent_soft;
+    border-color: alpha(@parley_accent, 0.70);
+}
+
+.hero-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: @parley_text;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    color: @parley_muted;
+}
+
+.welcome-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: @parley_text;
+}
+
+.welcome-subtitle {
+    font-size: 16px;
+    color: @parley_muted;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: @parley_text;
+}
+
+.muted {
+    color: @parley_muted;
+}
+
+.lang-grid {
+    margin-top: 32px;
+}
+
+button.lang-button {
+    background: @parley_surface;
+    color: @parley_text;
+    border: 1px solid alpha(@parley_text, 0.16);
+    border-radius: 14px;
+    padding: 10px 16px;
+    font-size: 18px;
+    font-weight: 600;
+    min-width: 160px;
+    min-height: 46px;
+    box-shadow: 0 1px 2px alpha(@parley_text, 0.08);
+}
+
+button.lang-button:hover {
+    background: @parley_accent_soft;
+    border-color: alpha(@parley_accent, 0.70);
+}
+
+button.lang-button.active {
+    background: @parley_accent_soft;
+    border-color: @parley_accent;
+}
+
+.card {
+    background: @parley_surface;
+    color: @parley_text;
+    border: 1px solid alpha(@parley_text, 0.12);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 1px 3px alpha(@parley_text, 0.10);
+}
+
+.card-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: @parley_text;
+}
+
+.card-subtitle {
+    color: @parley_muted;
+    font-size: 13px;
+}
+
+button.primary {
+    background: @parley_accent;
+    color: @parley_on_accent;
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-weight: 700;
+}
+
+button.primary:hover {
+    background: shade(@parley_accent, 0.92);
+}
+
+button.ghost {
+    background: transparent;
+    color: @parley_text;
+    border: 1px solid alpha(@parley_text, 0.22);
+    border-radius: 12px;
+    padding: 8px 14px;
+}
+
+button.ghost:hover {
+    background: @parley_accent_soft;
+}
+
+button.scenario {
+    background: @parley_surface;
+    color: @parley_text;
+    border: 1px solid alpha(@parley_text, 0.12);
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+button.scenario:hover {
+    border-color: @parley_accent;
+    background: @parley_accent_soft;
+}
+
+.pill {
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.pill-beginner {
+    background: @parley_pill_beginner_bg;
+    color: @parley_pill_beginner_text;
+}
+.pill-intermediate {
+    background: @parley_pill_intermediate_bg;
+    color: @parley_pill_intermediate_text;
+}
+.pill-advanced {
+    background: @parley_pill_advanced_bg;
+    color: @parley_pill_advanced_text;
+}
+
+.chat-scroll {
+    background: @parley_surface_alt;
+}
+
+.bubble {
+    border-radius: 16px;
+    padding: 10px 14px;
+}
+
+.bubble-user {
+    background: @parley_accent;
+    color: @parley_on_accent;
+}
+
+.bubble-ai {
+    background: @parley_surface;
+    border: 1px solid alpha(@parley_text, 0.12);
+    color: @parley_text;
+}
+
+.bubble-note {
+    background: @parley_note_bg;
+    border: 1px solid @parley_note_border;
+    color: @parley_note_text;
+    font-size: 13px;
+}
+
+.speaker-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: @parley_muted;
+}
+
+.state-dot {
+    border-radius: 999px;
+    min-width: 10px;
+    min-height: 10px;
+    background: @parley_muted;
+}
+
+.state-dot.listening { background: @parley_good; }
+.state-dot.thinking { background: @parley_warning; }
+.state-dot.speaking { background: @parley_accent; }
+.state-dot.paused { background: @parley_muted; }
+.state-dot.error { background: @parley_bad; }
+
+button.mic {
+    border-radius: 999px;
+    min-width: 74px;
+    min-height: 74px;
+    background: @parley_accent;
+    color: @parley_on_accent;
+    font-size: 26px;
+}
+
+button.mic.recording {
+    background: @parley_bad;
+}
+
+button.mic.flat {
+    background: @parley_surface;
+    color: @parley_text;
+    border: 1px solid alpha(@parley_text, 0.22);
+}
+
+/* Toggle buttons (AI backend, voice mode) must stay readable on top of
+ * distro themes such as KDE Breeze and Breeze Dark. */
+togglebutton,
+button.toggle {
+    background: @parley_surface;
+    color: @parley_text;
+    border: 1px solid alpha(@parley_text, 0.22);
+    border-radius: 12px;
+    padding: 8px 14px;
+}
+
+togglebutton:hover,
+button.toggle:hover {
+    background: @parley_accent_soft;
+}
+
+togglebutton:checked,
+togglebutton:active,
+button.toggle:checked,
+button.toggle:active {
+    background: @parley_accent;
+    color: @parley_on_accent;
+    border-color: @parley_accent;
+}
+
+togglebutton:checked:hover,
+button.toggle:checked:hover {
+    background: shade(@parley_accent, 0.92);
+    color: @parley_on_accent;
+}
+
+togglebutton > label,
+button.toggle > label {
+    color: inherit;
+}
+
+.word-ok {
+    color: @parley_good;
+    font-weight: 700;
+}
+
+.word-bad {
+    color: @parley_bad;
+    font-weight: 700;
+}
+
+.word-missing {
+    color: @parley_bad;
+    text-decoration: line-through;
+}
+
+.answer-entry {
+    min-width: 130px;
+}
+
+.score-big {
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.story-title {
+    font-weight: 700;
+}
+
+.story-row {
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+.story-row:hover {
+    background: @parley_accent_soft;
+}
+
+.error-text {
+    color: @parley_bad;
+}
+
+.progress-note {
+    font-size: 12px;
+    color: @parley_muted;
+}
+
+textview.diagnostics {
+    background: @parley_surface;
+    color: @parley_text;
+}
+
+/* Avoid GTK negative min-size warnings on scale sliders in some themes. */
+scale trough slider,
+scale slider {
+    min-width: 2px;
+    min-height: 2px;
+    margin: 0;
+    padding: 0;
+}

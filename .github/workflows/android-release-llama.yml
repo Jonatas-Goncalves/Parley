@@ -1,0 +1,90 @@
+name: Android Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Release tag to upload APK to (optional)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-release-${{ github.event.release.tag_name || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Parley-llama
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: ''
+
+      - name: Install Android SDK packages
+        run: |
+          sdkmanager --install \
+            "platforms;android-34" \
+            "build-tools;34.0.0" \
+            "ndk;27.2.12479018" \
+            "cmake;3.31.6"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Read version
+        id: meta
+        shell: bash
+        run: |
+          version="$(sed -n 's/^[[:space:]]*versionName = "\(.*\)"/\1/p' packaging/android/app/build.gradle.kts | head -n1)"
+          if [ -z "$version" ]; then version="0.0.0"; fi
+          tag="${{ github.event.release.tag_name }}"
+          if [ -z "$tag" ]; then tag="${{ inputs.tag_name }}"; fi
+          if [ -z "$tag" ]; then tag="v${version}"; fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Build debug APK
+        working-directory: packaging/android
+        run: ./gradlew :app:assembleDebug --stacktrace
+
+      - name: Rename APK
+        run: |
+          mkdir -p dist
+          src="packaging/android/app/build/outputs/apk/debug/app-debug.apk"
+          out="dist/Parley-llama-${{ steps.meta.outputs.version }}-android-debug.apk"
+          cp "$src" "$out"
+          sha256sum "$out" > "${out}.sha256"
+          ls -lh dist
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: parley-android-apk
+          path: |
+            dist/*.apk
+            dist/*.sha256
+          if-no-files-found: error
+
+      - name: Upload APK to GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          files: dist/*
+          fail_on_unmatched_files: true
+          overwrite_files: true

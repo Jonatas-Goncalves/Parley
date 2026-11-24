@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Parley
+GenericName=Language Tutor
+Comment=Practice languages locally with voice and text
+Exec=parley
+Icon=io.github.jonatasgoncalves.Parley
+Terminal=false
+Categories=Education;Languages;
+Keywords=languages;tutor;english;portuguese;spanish;french;italian;japanese;korean;chinese;
+StartupNotify=true
+StartupWMClass=io.github.jonatasgoncalves.Parley

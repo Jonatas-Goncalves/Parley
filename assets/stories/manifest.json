@@ -1,0 +1,397 @@
+{
+  "version": 1,
+  "stories": [
+    {
+      "title": "A Horseman in the Sky",
+      "author": "Ambrose Bierce",
+      "filename": "A_Horseman_in_the_Sky_-_By_Ambrose_Bierce.mp3",
+      "bytes": 5767168,
+      "seconds": 719.6,
+      "sha256": "32cda134d88216a1f26b5fb9422d8959b4269130fe89ea5a0aa62c1a5f61cb85"
+    },
+    {
+      "title": "A Municipal Report",
+      "author": "O Henry",
+      "filename": "A_Municipal_Report_-_By_O_Henry.mp3",
+      "bytes": 6135826,
+      "seconds": 765.7,
+      "sha256": "1a235a2620f4d37e501957a66323317dfc3d654163cb88733f6198e5074026a0"
+    },
+    {
+      "title": "A Pair of Silk Stockings",
+      "author": "Kate Chopin",
+      "filename": "A_Pair_of_Silk_Stockings_-_By_Kate_Chopin.mp3",
+      "bytes": 2621440,
+      "seconds": 655.3,
+      "sha256": "c264d1733a0a8d6a2a2aa0b947689999f4a0b3f1beae08614803c3c7abb213b1"
+    },
+    {
+      "title": "A Princess of Mars",
+      "author": "Edgar Rice Burroughs - Part 1",
+      "filename": "A_Princess_of_Mars_-_By_Edgar_Rice_Burroughs_-__Part_1.mp3",
+      "bytes": 5242880,
+      "seconds": 655.4,
+      "sha256": "79c96f441e79e85126ae51ded5c3ca7c44dbce336394d6bd2b85678a29b4da36"
+    },
+    {
+      "title": "A Princess of Mars",
+      "author": "Edgar Rice Burroughs - Part 2",
+      "filename": "A_Princess_of_Mars_-_By_Edgar_Rice_Burroughs_-__Part_2.mp3",
+      "bytes": 5242880,
+      "seconds": 655.3,
+      "sha256": "24a25087e5277e74b5aadd126d760b50dcdb0de7c9927bbf365f6b7393224a73"
+    },
+    {
+      "title": "A Princess of Mars",
+      "author": "Edgar Rice Burroughs - Part 3",
+      "filename": "A_Princess_of_Mars_-_By_Edgar_Rice_Burroughs_-__Part_3.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "07c6981e0575a0ee58953148c962be019047d7b063193072d16702d3727f5371"
+    },
+    {
+      "title": "A Princess of Mars",
+      "author": "Edgar Rice Burroughs - Part 4",
+      "filename": "A_Princess_of_Mars_-_By_Edgar_Rice_Burroughs_-__Part_4.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "7aa1ae8fdb6b71c86ac17b2f7502bdf43ba95210f5ffc05781902dc7e0839cfe"
+    },
+    {
+      "title": "An Occurrence at Owl Creek Bridge",
+      "author": "Ambrose Bierce",
+      "filename": "An_Occurrence_at_Owl_Creek_Bridge_-_By_Ambrose_Bierce.mp3",
+      "bytes": 2621440,
+      "seconds": 655.4,
+      "sha256": "71dcb169f98ab62753286a2aea3947969a1219759dc811dfb518763f13507545"
+    },
+    {
+      "title": "Athenaise",
+      "author": "Kate Chopin",
+      "filename": "Athenaise_-_By_Kate_Chopin.mp3",
+      "bytes": 3145728,
+      "seconds": 786.4,
+      "sha256": "6a824df44a7f0b614a8573501984bbd9f847ae3b6652bcfb1152145c02f60d94"
+    },
+    {
+      "title": "Bartleby",
+      "author": "Herman Melville",
+      "filename": "Bartleby_-_By_Herman_Melville.mp3",
+      "bytes": 6291456,
+      "seconds": 786.4,
+      "sha256": "bc7bec3c37f952efac8181814a6858918d9404e58ac6b2f6d16ce366c6cea4db"
+    },
+    {
+      "title": "Benito Cereno: Part 1",
+      "author": "Herman Melville",
+      "filename": "Benito_Cereno_-_Part_1_-_By_Herman_Melville.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "28c935fcb8e2a0898e1355d78f641307ff780960fd45e4b75383f3ebfdcffb12"
+    },
+    {
+      "title": "Benito Cereno: Part 2",
+      "author": "Herman Melville",
+      "filename": "Benito_Cereno_-_Part_2_-_By_Herman_Melville.mp3",
+      "bytes": 6291456,
+      "seconds": 786.4,
+      "sha256": "2e65a20ef375476978e9f7145f8c434be0a212633e2c30f1284dd4e337d47e36"
+    },
+    {
+      "title": "Benito Cereno: Part 3",
+      "author": "Herman Melville",
+      "filename": "Benito_Cereno_-_Part_3_-_By_Herman_Melville.mp3",
+      "bytes": 6291456,
+      "seconds": 786.4,
+      "sha256": "794b4d9b2aca5d6b272275eec163be04d209d2c0fba58dab72bdb3b894a6faae"
+    },
+    {
+      "title": "Doctor Heideggers Experiment",
+      "author": "Nathaniel Hawthorne",
+      "filename": "Doctor_Heideggers_Experiment_-_By_Nathaniel_Hawthorne.mp3",
+      "bytes": 3145728,
+      "seconds": 786.4,
+      "sha256": "69801aaf76ae582a3e24cefdd3239e80d6097d39b404c963a09719927b6c151b"
+    },
+    {
+      "title": "Feathertop",
+      "author": "Nathaniel Hawthorne",
+      "filename": "Feathertop_-_By_Nathaniel_Hawthorne.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "e5a4f90ed4f9c576661fc98f89e48ee668e06ca752815c63c0122f21a69094e8"
+    },
+    {
+      "title": "John Henry",
+      "author": "",
+      "filename": "John_Henry.mp3",
+      "bytes": 6593745,
+      "seconds": 822.9,
+      "sha256": "ce546eec020c4613da6c5a930d676c7e8ead46c5710906c13d672c4d3449727b"
+    },
+    {
+      "title": "Keesh",
+      "author": "Jack London",
+      "filename": "Keesh_-_By_Jack_London.mp3",
+      "bytes": 6291456,
+      "seconds": 786.4,
+      "sha256": "e5c2f1feeb57d4896402bf80d726f5bc22b52873f3f9d7724a830919e7daf353"
+    },
+    {
+      "title": "Luck",
+      "author": "Mark Twain",
+      "filename": "Luck_-_By_Mark_Twain.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "7f1b7a0978557df944881c23a174dc80022c86317ef071a39bc556ec9d2d9a95"
+    },
+    {
+      "title": "Paul Bunyan",
+      "author": "",
+      "filename": "Paul_Bunyan.mp3",
+      "bytes": 6291456,
+      "seconds": 786.4,
+      "sha256": "ffcce4c6ff2ff9abfbdfdf32fdd22adfcc89806ef13345f814f82174d2e5e0e5"
+    },
+    {
+      "title": "Paul s Case: Part 1",
+      "author": "Willa Cather",
+      "filename": "Paul_s_Case_-_Part_1_-_By_Willa_Cather.mp3",
+      "bytes": 2097152,
+      "seconds": 699.0,
+      "sha256": "57d95bc42e10004dbdd0c805d1b86b97f4dbc98b0021489bd4143f6b764ae767"
+    },
+    {
+      "title": "Paul s Case: Part 2",
+      "author": "Willa Cather",
+      "filename": "Paul_s_Case_-_Part_2_-_By_Willa_Cather.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "31cfff6a88f7ee74c35e5a8173b888fc6ca6aee16d472e83e19c26d332347049"
+    },
+    {
+      "title": "Pecos Bill",
+      "author": "",
+      "filename": "Pecos_Bill.mp3",
+      "bytes": 2621440,
+      "seconds": 655.3,
+      "sha256": "baac826ccef7e94698166cfa1126a64698373b7404cb70fc4598a951ca5b7f97"
+    },
+    {
+      "title": "Rappaccini s Daughter",
+      "author": "Nathaniel Hawthorne - Part 1",
+      "filename": "Rappaccini_s_Daughter_-_By_Nathaniel_Hawthorne_-_Part_1.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "57bfa7efb7d2d362447761196b0b5018a4fc50aba2d2f067fa1ed8080b720a76"
+    },
+    {
+      "title": "Rappaccini s Daughter",
+      "author": "Nathaniel Hawthorne - Part 2",
+      "filename": "Rappaccini_s_Daughter_-_By_Nathaniel_Hawthorne_-_Part_2.mp3",
+      "bytes": 6291456,
+      "seconds": 786.4,
+      "sha256": "53961fe55d3398331a90537dae287d055707deff17ef9d10cba004280cecb696"
+    },
+    {
+      "title": "The Ambitious Guest",
+      "author": "Nathaniel Hawthorne",
+      "filename": "The_Ambitious_Guest_-_By_Nathaniel_Hawthorne.mp3",
+      "bytes": 6288109,
+      "seconds": 786.0,
+      "sha256": "3f15b9df54050cd2080138123385d9b050bfa7f369e2b53bf332692d914b38aa"
+    },
+    {
+      "title": "The Birthmark",
+      "author": "Nathaniel Hawthorne",
+      "filename": "The_Birthmark_-_By_Nathaniel_Hawthorne.mp3",
+      "bytes": 3145727,
+      "seconds": 786.4,
+      "sha256": "fa6365947b0d1579089eb845cc8e86d79d152e06de1404bb12623cf094908bee"
+    },
+    {
+      "title": "The Boarded Window",
+      "author": "Ambrose Bierce",
+      "filename": "The_Boarded_Window_-_By_Ambrose_Bierce.mp3",
+      "bytes": 3145728,
+      "seconds": 786.4,
+      "sha256": "0c3337569901a561cd0d389895c94a7ffd70153d13ca4d65f94c56939c82f92f"
+    },
+    {
+      "title": "The Californian s Tale",
+      "author": "Mark Twain",
+      "filename": "The_Californian_s_Tale_-_By_Mark_Twain.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "8cbbe70754f3259eb5bbca02daf38f31f657b9de12342438f46fb3f92c85a559"
+    },
+    {
+      "title": "The Cask of Amontillado",
+      "author": "Edgar Allan Poe",
+      "filename": "The_Cask_of_Amontillado_-_By_Edgar_Allan_Poe.mp3",
+      "bytes": 6099996,
+      "seconds": 761.2,
+      "sha256": "4b5119244cb8b7412a32c97041db8d6b75d326d5ae18a729e2f410dd2b29788c"
+    },
+    {
+      "title": "The Devil and Tom Walker",
+      "author": "Washington Irving",
+      "filename": "The_Devil_and_Tom_Walker_-_By_Washington_Irving.mp3",
+      "bytes": 6088877,
+      "seconds": 759.8,
+      "sha256": "4d1421aece62688ab5254fd4c917dd0fe35b1efeaa90ecbaf8692ccd7ff0b4bc"
+    },
+    {
+      "title": "The Diamond Lens",
+      "author": "Fitz-James O Brien - Part 1",
+      "filename": "The_Diamond_Lens_-_By_Fitz-James_O_Brien_-_Part_1.mp3",
+      "bytes": 3145727,
+      "seconds": 786.4,
+      "sha256": "bd4d64b4d99869f2713f48abe5e8b146aff227d3ff5b5b94289b31f20b0f371e"
+    },
+    {
+      "title": "The Diamond Lens",
+      "author": "Fitz-James O Brien - Part 2",
+      "filename": "The_Diamond_Lens_-_By_Fitz-James_O_Brien_-_Part_2.mp3",
+      "bytes": 2621440,
+      "seconds": 655.3,
+      "sha256": "1d6dd2858b0e12f1024ff068585028153ba1e41c720729352784643ef7506a48"
+    },
+    {
+      "title": "The Gift of the Magi",
+      "author": "O Henry",
+      "filename": "The_Gift_of_the_Magi_-_By_O_Henry.mp3",
+      "bytes": 6291456,
+      "seconds": 786.4,
+      "sha256": "cfe67db6df907e66a90ba178ea41f2931a2cefe69a9886ec5e994908963ed573"
+    },
+    {
+      "title": "The God of His Fathers",
+      "author": "Jack London",
+      "filename": "The_God_of_His_Fathers_-_By_Jack_London.mp3",
+      "bytes": 6122792,
+      "seconds": 764.1,
+      "sha256": "d450b10dd70ad345d8f672fd212d9b10073d32c09b68f84559d348fe51b663b1"
+    },
+    {
+      "title": "The Lady or the Tiger",
+      "author": "Frank R Stockton",
+      "filename": "The_Lady_or_the_Tiger_-__By_Frank_R_Stockton.mp3",
+      "bytes": 3097751,
+      "seconds": 771.9,
+      "sha256": "5a55bd4aceb6ebb71ad2f669a6589c524cf93351cd3dc06cbd872dca79abe3b2"
+    },
+    {
+      "title": "The Law of Life",
+      "author": "Jack London",
+      "filename": "The_Law_of_Life_-_By_Jack_London.mp3",
+      "bytes": 6291456,
+      "seconds": 786.4,
+      "sha256": "226def51e35fe9ab2f015c04c62129ce164f4662421c6b5508c8d615f3210806"
+    },
+    {
+      "title": "The Legend of Sleepy Hollow",
+      "author": "Washington Irving",
+      "filename": "The_Legend_of_Sleepy_Hollow_-_By_Washington_Irving.mp3",
+      "bytes": 5242880,
+      "seconds": 655.4,
+      "sha256": "5f79a6a6686d77d92714d3bd54faeb9612b0fca010b09d11e9020e9966a12f6f"
+    },
+    {
+      "title": "The Line of Least Resistance",
+      "author": "Edith Wharton",
+      "filename": "The_Line_of_Least_Resistance_-_By_Edith_Wharton.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "54c36d2bdf2b08261aa16b9d815e2744c34c27523cddecf6f842a13771bc298e"
+    },
+    {
+      "title": "The Luck of Roaring Camp",
+      "author": "Bret Harte",
+      "filename": "The_Luck_of_Roaring_Camp_-_By_Bret_Harte.mp3",
+      "bytes": 3145728,
+      "seconds": 786.4,
+      "sha256": "a13ba1596571ceaed39c3a09edb8beaeb4e21955021dbb0265562c63629382c3"
+    },
+    {
+      "title": "The Open Boat",
+      "author": "Stephen Crane - Part 1",
+      "filename": "The_Open_Boat_-_By_Stephen_Crane_-_Part_1.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "b3ad27a04bb82ab976aef86f76ff07792370619269299c7ced68ef582e4dea6a"
+    },
+    {
+      "title": "The Open Boat",
+      "author": "Stephen Crane - Part 2",
+      "filename": "The_Open_Boat_-_By_Stephen_Crane_-_Part_2.mp3",
+      "bytes": 3145728,
+      "seconds": 629.1,
+      "sha256": "c5218fd208460e32852844ef6c6e281975a82aeb2ef2525925b092d105e96532"
+    },
+    {
+      "title": "The Purloined Letter",
+      "author": "Edgar Alen Poe",
+      "filename": "The_Purloined_Letter_-_By_Edgar_Alen_Poe.mp3",
+      "bytes": 2620397,
+      "seconds": 655.1,
+      "sha256": "4d532a0ea825e507528b8af55932f0e90177e33169421e5941360a2dcc9336e1"
+    },
+    {
+      "title": "The Ransom of Red Chief",
+      "author": "O Henry",
+      "filename": "The_Ransom_of_Red_Chief_-_By_O_Henry.mp3",
+      "bytes": 3145728,
+      "seconds": 786.4,
+      "sha256": "5410a459ecb67dda870651976fda513f0bdd27b68cb272f5ad924646f69777ac"
+    },
+    {
+      "title": "The Return of a Private",
+      "author": "Hamlin Garland",
+      "filename": "The_Return_of_a_Private_-_By_Hamlin_Garland.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "83bd8a934dbc65ab91acb16c5c6efe494dfd4a1a03574272b3710a7ae16c769f"
+    },
+    {
+      "title": "The Story of an Eyewitness",
+      "author": "Jack London",
+      "filename": "The_Story_of_an_Eyewitness_-_By_Jack_London.mp3",
+      "bytes": 6094239,
+      "seconds": 760.5,
+      "sha256": "16e5da0943b85e135f13862787d8148fa5c73d582b32a54b89390c342cd9c016"
+    },
+    {
+      "title": "The Tell-Tale Heart",
+      "author": "Edgar Allan Poe",
+      "filename": "The_Tell-Tale_Heart_-_By_Edgar_Allan_Poe.mp3",
+      "bytes": 2621440,
+      "seconds": 655.4,
+      "sha256": "7bb245fa0848c1176de9391b11915cc561ef0095e1e10b75afddb927906a532c"
+    },
+    {
+      "title": "The Whirligig of Life",
+      "author": "O Henry",
+      "filename": "The_Whirligig_of_Life_-_By_O_Henry.mp3",
+      "bytes": 3260416,
+      "seconds": 815.1,
+      "sha256": "6ee5e8d005051b7123aceec26facefee8668841201ae3be88c86cd73958a4dc2"
+    },
+    {
+      "title": "The White Heron",
+      "author": "Sarah Orne Jewett",
+      "filename": "The_White_Heron_-_By_Sarah_Orne_Jewett.mp3",
+      "bytes": 5767168,
+      "seconds": 720.9,
+      "sha256": "e0fae7dfb36f51d9867936aeb9652e2d817edc3f78b7f7905c47c30dbe645bfb"
+    },
+    {
+      "title": "To Build a Fire",
+      "author": "Jack London",
+      "filename": "To_Build_a_Fire_-_By_Jack_London.mp3",
+      "bytes": 6204000,
+      "seconds": 774.2,
+      "sha256": "15d8607c715eb29f95ba29a21b9a868709ff0ccdc78512c027c6f8407ddaa86e"
+    }
+  ]
+}
